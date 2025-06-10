@@ -59,6 +59,7 @@ const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isVisible, setIsVisible] = useState(false);
+  const [imageLoadStates, setImageLoadStates] = useState<Record<number, boolean>>({});
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -74,6 +75,7 @@ const ProjectsSection = () => {
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
+          console.log('ProjectsSection is now visible');
           setIsVisible(true);
         }
       },
@@ -92,6 +94,15 @@ const ProjectsSection = () => {
       }
     };
   }, []);
+
+  const handleImageLoad = (projectId: number) => {
+    console.log(`Image loaded for project ${projectId}`);
+    setImageLoadStates(prev => ({ ...prev, [projectId]: true }));
+  };
+
+  const handleImageError = (projectId: number, imageUrl: string) => {
+    console.error(`Failed to load image for project ${projectId}:`, imageUrl);
+  };
 
   return (
     <section className="py-16 bg-white" id="projects">
@@ -132,17 +143,26 @@ const ProjectsSection = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-construction-200 opacity-0 ${
-                isVisible ? 'animate-fadeIn' : ''
+              className={`group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-construction-200 ${
+                isVisible ? 'animate-fadeIn' : 'opacity-0'
               }`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: isVisible ? `${index * 100}ms` : '0ms' }}
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden bg-construction-100">
+                {!imageLoadStates[project.id] && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-construction-100">
+                    <div className="animate-pulse text-construction-500">Carregando...</div>
+                  </div>
+                )}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className={`w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${
+                    imageLoadStates[project.id] ? 'opacity-100' : 'opacity-0'
+                  }`}
                   loading="lazy"
+                  onLoad={() => handleImageLoad(project.id)}
+                  onError={() => handleImageError(project.id, project.image)}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
