@@ -23,6 +23,20 @@ const testimonials = [
     position: "Diretor - Galpão Industrial",
     quote: "Construíram nosso galpão industrial com excelência técnica. O projeto foi executado conforme especificado e a obra entregue no prazo combinado. Parceria de confiança!",
     image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
+  },
+  {
+    id: 4,
+    name: "Ana Paula Costa",
+    position: "Administradora - Condomínio Residencial",
+    quote: "A ForteBase fez toda a revitalização das áreas comuns do nosso condomínio. Trabalho impecável, desde o planejamento até a execução. Os moradores ficaram muito satisfeitos!",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b830?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
+  },
+  {
+    id: 5,
+    name: "Fernando Silva",
+    position: "Gerente - Restaurante",
+    quote: "Precisávamos reformar nosso restaurante rapidamente para não perder a temporada. A ForteBase trabalhou em tempo recorde sem comprometer a qualidade. Resultado fantástico!",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
   }
 ];
 
