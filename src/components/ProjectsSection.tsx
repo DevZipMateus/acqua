@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Eye, Filter, X } from 'lucide-react';
 
@@ -219,21 +220,21 @@ const ProjectsSection = () => {
 
       {/* Image Modal */}
       {expandedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4">
-          <div className="relative max-w-7xl max-h-full">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-2 sm:p-4">
+          <div className="relative w-full h-full max-w-7xl max-h-full flex items-center justify-center">
             <button
               onClick={handleCloseExpanded}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all duration-200"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all duration-200"
             >
-              <X className="w-6 h-6" />
+              <X className="w-4 h-4 sm:w-6 sm:h-6" />
             </button>
             <img
               src={expandedImage.src}
               alt={expandedImage.title}
               className="max-w-full max-h-full object-contain rounded-lg"
             />
-            <div className="absolute bottom-4 left-4 right-4 text-center">
-              <h3 className="text-white text-xl font-bold bg-black bg-opacity-50 rounded-lg py-2 px-4 inline-block">
+            <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 text-center">
+              <h3 className="text-white text-sm sm:text-xl font-bold bg-black bg-opacity-50 rounded-lg py-1 px-2 sm:py-2 sm:px-4 inline-block">
                 {expandedImage.title}
               </h3>
             </div>
