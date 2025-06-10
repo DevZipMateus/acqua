@@ -39,22 +39,22 @@ const teamMembers = [
 
 const TeamSection = () => {
   return (
-    <section className="py-16 bg-white" id="team">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+    <section className="py-12 sm:py-16 bg-white" id="team">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <span className="inline-block py-2 px-4 rounded-full text-sm font-semibold bg-construction-100 text-construction-600 mb-4">
             Nossa Equipe
           </span>
-          <h2 className="heading-lg mb-6">
+          <h2 className="heading-lg mb-4 sm:mb-6">
             Profissionais experientes e <span className="text-gradient">qualificados</span>
           </h2>
-          <p className="text-construction-600 text-lg">
+          <p className="text-construction-600 text-base sm:text-lg leading-relaxed">
             Nossa equipe é formada por engenheiros, arquitetos e técnicos especializados,
             comprometidos em entregar projetos de excelência.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {teamMembers.map((member, index) => (
             <Card 
               key={index} 
@@ -69,19 +69,19 @@ const TeamSection = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-construction-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center">
-                    <div className="flex gap-3 p-4 mb-2">
-                      <a href={`mailto:${member.email}`} className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
-                        <Mail className="w-4 h-4" />
+                    <div className="flex gap-2 sm:gap-3 p-3 sm:p-4 mb-2">
+                      <a href={`mailto:${member.email}`} className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
+                        <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
                       </a>
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
-                        <Linkedin className="w-4 h-4" />
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
+                        <Linkedin className="w-3 h-3 sm:w-4 sm:h-4" />
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="p-4 text-center bg-construction-50">
-                  <h3 className="text-xl font-bold text-construction-800">{member.name}</h3>
-                  <p className="text-blue-600 font-medium">{member.position}</p>
+                <div className="p-3 sm:p-4 text-center bg-construction-50">
+                  <h3 className="text-lg sm:text-xl font-bold text-construction-800">{member.name}</h3>
+                  <p className="text-sm sm:text-base text-blue-600 font-medium">{member.position}</p>
                 </div>
               </CardContent>
             </Card>

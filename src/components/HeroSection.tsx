@@ -56,7 +56,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden" id="hero">
+    <section className="relative h-screen min-h-[600px] max-h-screen overflow-hidden" id="hero">
       {/* Carousel */}
       <div className="relative h-full">
         {heroSlides.map((slide, index) => (
@@ -77,23 +77,23 @@ const HeroSection = () => {
 
         {/* Content */}
         <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <span className={`inline-block py-2 px-4 rounded-full text-sm font-medium bg-yellow-500 text-construction-900 mb-6 opacity-0 ${isVisible ? 'animate-fadeIn' : ''}`}>
+              <span className={`inline-block py-2 px-3 sm:px-4 rounded-full text-xs sm:text-sm font-medium bg-yellow-500 text-construction-900 mb-4 sm:mb-6 opacity-0 ${isVisible ? 'animate-fadeIn' : ''}`}>
                 Construtora ForteBase
               </span>
-              <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 ${isVisible ? 'animate-slideDown' : ''}`}>
+              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight opacity-0 ${isVisible ? 'animate-slideDown' : ''}`}>
                 {heroSlides[currentSlide].title}
               </h1>
-              <p className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-0 ${isVisible ? 'animate-slideDown delay-200' : ''}`}>
+              <p className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed opacity-0 ${isVisible ? 'animate-slideDown delay-200' : ''}`}>
                 {heroSlides[currentSlide].subtitle}
               </p>
-              <div className={`flex flex-col sm:flex-row justify-center gap-4 opacity-0 ${isVisible ? 'animate-slideDown delay-300' : ''}`}>
-                <Link to="/contact" className="button-accent group">
+              <div className={`flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 opacity-0 ${isVisible ? 'animate-slideDown delay-300' : ''}`}>
+                <Link to="/contact" className="button-accent group px-6 py-3 text-sm sm:text-base">
                   {heroSlides[currentSlide].cta}
-                  <ArrowRight className="inline-block ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
-                <Link to="/services" className="button-secondary">
+                <Link to="/services" className="button-secondary px-6 py-3 text-sm sm:text-base">
                   Nossos serviços
                 </Link>
               </div>
@@ -104,27 +104,27 @@ const HeroSection = () => {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20"
           aria-label="Slide anterior"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20"
           aria-label="Próximo slide"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === currentSlide ? 'bg-yellow-500 w-8' : 'bg-white bg-opacity-50'
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                index === currentSlide ? 'bg-yellow-500 w-6 sm:w-8' : 'bg-white bg-opacity-50'
               }`}
               aria-label={`Ir para slide ${index + 1}`}
             />

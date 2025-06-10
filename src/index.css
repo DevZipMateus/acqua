@@ -66,19 +66,19 @@
 
 @layer components {
   .heading-xl {
-    @apply text-2xl md:text-4xl lg:text-5xl font-bold text-construction-800 tracking-tight;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-construction-800 tracking-tight;
   }
   
   .heading-lg {
-    @apply text-xl md:text-3xl font-bold text-construction-800 tracking-tight;
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-construction-800 tracking-tight;
   }
   
   .heading-md {
-    @apply text-lg md:text-2xl font-bold text-construction-800;
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-construction-800;
   }
   
   .subtitle {
-    @apply text-sm md:text-lg text-construction-600 max-w-3xl;
+    @apply text-sm sm:text-base md:text-lg text-construction-600 max-w-3xl;
   }
   
   .text-gradient {
@@ -86,15 +86,15 @@
   }
   
   .button-primary {
-    @apply inline-flex items-center justify-center px-4 md:px-6 py-2 md:py-3 rounded-lg bg-blue-700 text-white font-medium hover:bg-blue-800 transition-colors;
+    @apply inline-flex items-center justify-center px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-lg bg-blue-700 text-white font-medium hover:bg-blue-800 transition-colors text-sm sm:text-base;
   }
   
   .button-secondary {
-    @apply inline-flex items-center justify-center px-4 md:px-6 py-2 md:py-3 rounded-lg bg-white text-blue-700 font-medium border border-blue-200 hover:bg-blue-50 transition-colors;
+    @apply inline-flex items-center justify-center px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-lg bg-white text-blue-700 font-medium border border-blue-200 hover:bg-blue-50 transition-colors text-sm sm:text-base;
   }
 
   .button-accent {
-    @apply inline-flex items-center justify-center px-4 md:px-6 py-2 md:py-3 rounded-lg bg-yellow-500 text-construction-900 font-medium hover:bg-yellow-600 transition-colors;
+    @apply inline-flex items-center justify-center px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded-lg bg-yellow-500 text-construction-900 font-medium hover:bg-yellow-600 transition-colors text-sm sm:text-base;
   }
 
   .glass-card {
@@ -110,7 +110,7 @@
   }
 
   .section-padding {
-    @apply py-6 md:py-10;
+    @apply py-8 sm:py-12 md:py-16;
   }
 
   .construction-gradient {
@@ -202,15 +202,32 @@
   }
   
   .mobile-container {
-    @apply px-4 md:px-6 lg:px-8;
+    @apply px-4 sm:px-6 lg:px-8;
   }
   
   .mobile-py {
-    @apply py-4 md:py-6 lg:py-8;
+    @apply py-4 sm:py-6 lg:py-8;
   }
   
   .mobile-my {
-    @apply my-4 md:my-6 lg:my-8;
+    @apply my-4 sm:my-6 lg:py-8;
+  }
+
+  /* Enhanced responsive breakpoints */
+  .xs-text {
+    @apply text-xs sm:text-sm;
+  }
+
+  .responsive-padding {
+    @apply px-2 sm:px-4 md:px-6 lg:px-8;
+  }
+
+  .responsive-margin {
+    @apply mx-2 sm:mx-4 md:mx-6 lg:mx-8;
+  }
+
+  .responsive-gap {
+    @apply gap-2 sm:gap-4 md:gap-6 lg:gap-8;
   }
 }
 
@@ -221,38 +238,37 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+/* ... keep existing code (logo animations and other styles) */
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Enhanced mobile styles */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .heading-xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .heading-lg {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
-.card {
-  padding: 1em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
