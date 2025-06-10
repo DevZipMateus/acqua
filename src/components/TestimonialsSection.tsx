@@ -8,21 +8,21 @@ const testimonials = [
     name: "João Mendes",
     position: "Proprietário - Casa Residencial",
     quote: "A ForteBase construiu nossa casa dos sonhos! A qualidade dos materiais e o profissionalismo da equipe superaram nossas expectativas. Recomendo sem hesitar!",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
   },
   {
     id: 2,
     name: "Maria Santos",
     position: "Empresária - Reforma Comercial",
     quote: "Reforma do nosso escritório foi feita com muito cuidado e dentro do prazo. A equipe é pontual, organizada e sempre mantém o cliente informado sobre o progresso.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
   },
   {
     id: 3,
     name: "Ricardo Oliveira",
     position: "Diretor - Galpão Industrial",
     quote: "Construíram nosso galpão industrial com excelência técnica. O projeto foi executado conforme especificado e a obra entregue no prazo combinado. Parceria de confiança!",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
   }
 ];
 
