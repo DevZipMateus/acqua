@@ -11,15 +11,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-white to-gray-100 text-gray-800 pt-12 md:pt-16">
+    <footer className="bg-gradient-to-b from-construction-800 to-construction-900 text-white pt-12 md:pt-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 pb-10">
           <div>
-            <Link to="/" className="text-xl md:text-2xl font-display font-bold text-wine-800 mb-4 block hover:text-wine-600 transition-colors">
-              Conta<span className="text-wine-600">Connection</span>
+            <Link to="/" className="flex items-center space-x-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">FB</span>
+              </div>
+              <div>
+                <span className="text-xl font-bold text-blue-400">Construtora</span>
+                <span className="text-xl font-bold text-white ml-1">ForteBase</span>
+              </div>
             </Link>
-            <p className="text-gray-700 mb-5 leading-relaxed text-sm md:text-base">
-              Soluções contábeis inteligentes para empresas de todos os portes. Oferecemos serviços de contabilidade digital eficiente e moderna.
+            <p className="text-construction-300 mb-5 leading-relaxed text-sm md:text-base">
+              Soluções completas em construção civil para transformar seus projetos em realidade.
+              Qualidade, confiança e excelência há mais de 15 anos.
             </p>
             <div className="flex space-x-4">
               {[
@@ -31,7 +38,7 @@ const Footer = () => {
                 <a 
                   key={label} 
                   href={link} 
-                  className="text-wine-700 hover:text-wine-500 transition-colors" 
+                  className="text-construction-400 hover:text-blue-400 transition-colors" 
                   aria-label={label}
                 >
                   <Icon className="w-6 h-6" />
@@ -41,55 +48,67 @@ const Footer = () => {
           </div>
           
           <div className="mt-2 md:mt-0">
-            <h3 className="text-lg md:text-xl font-bold mb-4 text-wine-700">Links Rápidos</h3>
+            <h3 className="text-lg md:text-xl font-bold mb-4 text-blue-400">Links Rápidos</h3>
             <ul className="space-y-2 grid grid-cols-2 md:grid-cols-1">
               {[
                 { label: "Início", to: "/" },
-                { label: "Sobre Nós", to: "/about" },
+                { label: "Sobre", to: "/about" },
                 { label: "Serviços", to: "/services" },
+                { label: "Projetos", href: "#projects" },
+                { label: "Depoimentos", href: "#testimonials" },
                 { label: "Contato", to: "/contact" }
-              ].map(({ label, to }) => (
+              ].map(({ label, to, href }) => (
                 <li key={label}>
-                  <Link 
-                    to={to} 
-                    className="text-gray-700 hover:text-wine-600 transition-colors flex items-center text-sm md:text-base"
-                  >
-                    <span className="w-1.5 h-1.5 bg-wine-500 rounded-full mr-2 inline-block"></span>
-                    {label}
-                  </Link>
+                  {to ? (
+                    <Link 
+                      to={to} 
+                      className="text-construction-300 hover:text-blue-400 transition-colors flex items-center text-sm md:text-base"
+                    >
+                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 inline-block"></span>
+                      {label}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={href} 
+                      className="text-construction-300 hover:text-blue-400 transition-colors flex items-center text-sm md:text-base"
+                    >
+                      <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 inline-block"></span>
+                      {label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
           
           <div className="mt-2 md:mt-0">
-            <h3 className="text-lg md:text-xl font-bold mb-4 text-wine-700">Contato</h3>
+            <h3 className="text-lg md:text-xl font-bold mb-4 text-blue-400">Contato</h3>
             <ul className="space-y-4">
               {[
                 { 
                   Icon: Phone, 
-                  items: ["(11) 4002-8922"],
-                  className: "text-wine-600"
+                  items: ["(11) 99999-9999", "(11) 3456-7890"],
+                  className: "text-blue-400"
                 },
                 { 
                   Icon: Mail, 
-                  items: ["contato@contaconnection.com.br"],
-                  className: "text-wine-600"
+                  items: ["contato@construtorafortebase.com.br"],
+                  className: "text-blue-400"
                 },
                 { 
                   Icon: MapPin, 
                   items: [
-                    "Avenida Paulista, 1000", 
-                    "Bela Vista, São Paulo - SP"
+                    "Av. Construção, 1000", 
+                    "São Paulo - SP"
                   ],
-                  className: "text-wine-600"
+                  className: "text-blue-400"
                 }
               ].map(({ Icon, items, className }, index) => (
                 <li key={index} className="flex items-start">
                   <Icon className={`w-5 h-5 ${className} mr-3 flex-shrink-0 mt-0.5`} />
                   <div>
                     {items.map((item, i) => (
-                      <p key={i} className="text-gray-700 text-sm md:text-base">{item}</p>
+                      <p key={i} className="text-construction-300 text-sm md:text-base">{item}</p>
                     ))}
                   </div>
                 </li>
@@ -98,14 +117,14 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-200 py-4 md:py-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-600 text-xs md:text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} ContaConnection. Todos os direitos reservados.
+        <div className="border-t border-construction-700 py-4 md:py-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-construction-400 text-xs md:text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Construtora ForteBase. Todos os direitos reservados.
           </p>
           <div className="flex items-center">
             <button 
               onClick={scrollToTop}
-              className="bg-wine-600 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-wine-500 transition-colors focus:outline-none focus:ring-2 focus:ring-wine-400 focus:ring-offset-2 focus:ring-offset-white"
+              className="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-construction-900"
               aria-label="Voltar ao topo"
             >
               <ArrowUp className="w-4 h-4" />

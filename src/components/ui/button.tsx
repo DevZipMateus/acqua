@@ -10,18 +10,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-wine-700 text-white hover:bg-wine-800", // Primary color (60%)
+        default: "bg-blue-700 text-white hover:bg-blue-800",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-wine-300 bg-background hover:bg-wine-50 hover:text-wine-700", // Secondary color (30%)
+          "border border-blue-300 bg-background hover:bg-blue-50 hover:text-blue-700",
         secondary:
-          "bg-wine-100 text-wine-700 hover:bg-wine-200", // Secondary color (30%)
-        ghost: "hover:bg-wine-50 hover:text-wine-700", // Secondary interaction
-        link: "text-wine-700 underline-offset-4 hover:underline", // Accent color (10%)
-        wine: "bg-wine-600 text-white hover:bg-wine-700", // Primary variant
-        outlineWine: "border border-wine-600 text-wine-600 hover:bg-wine-50", // Secondary variant
-        contrast: "bg-amber-600 text-white hover:bg-amber-700", // Contrast color (10%)
+          "bg-construction-100 text-construction-700 hover:bg-construction-200",
+        ghost: "hover:bg-blue-50 hover:text-blue-700",
+        link: "text-blue-700 underline-offset-4 hover:underline",
+        blue: "bg-blue-600 text-white hover:bg-blue-700",
+        outlineBlue: "border border-blue-600 text-blue-600 hover:bg-blue-50",
+        yellow: "bg-yellow-500 text-construction-900 hover:bg-yellow-600",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -41,7 +41,6 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  // We don't need the as prop anymore since we're using a different approach
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

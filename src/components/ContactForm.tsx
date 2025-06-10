@@ -1,75 +1,86 @@
 
-import { Phone, Mail } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
   return (
-    <section className="py-6 md:py-10 bg-gradient-to-b from-scarlet-50 to-white" id="contact">
+    <section className="py-16 bg-white" id="contact">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-          <span className="inline-block py-1 px-3 rounded-full text-sm font-medium bg-scarlet-100 text-scarlet-600 mb-2">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-block py-2 px-4 rounded-full text-sm font-medium bg-yellow-500 text-construction-900 mb-4">
             Contato
           </span>
-          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-3">
-            Entre em contato conosco
+          <h2 className="heading-lg mb-4">
+            Vamos construir seu projeto juntos
           </h2>
-          <p className="text-sm md:text-lg text-gray-600">
-            Estamos prontos para atender suas necessidades contábeis através dos nossos canais de comunicação.
-            Entre em contato por telefone, e-mail ou WhatsApp e retornaremos o mais breve possível.
+          <p className="subtitle">
+            Entre em contato conosco para solicitar um orçamento gratuito ou tirar suas dúvidas.
+            Nossa equipe está pronta para atender você.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="glass-card rounded-xl p-4 md:p-6 animate-slideInRight">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6 text-center">Nossos Canais de Atendimento</h3>
+        <div className="max-w-4xl mx-auto">
+          <div className="glass-card rounded-xl p-8 animate-slideInRight">
+            <h3 className="text-2xl font-bold text-construction-900 mb-6 text-center">Nossos Canais de Atendimento</h3>
             
-            <div className="space-y-5 md:space-y-6">
-              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
-                <div className="w-12 h-12 rounded-full bg-scarlet-100 flex items-center justify-center mb-2 md:mb-0 md:mr-4">
-                  <Phone className="w-5 h-5 text-scarlet-600" />
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4 mx-auto">
+                  <Phone className="w-6 h-6 text-blue-600" />
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">Telefone</h4>
-                  <p className="text-base md:text-lg text-gray-600">(11) 4002-8922</p>
-                  <p className="text-base md:text-lg text-gray-600">(11) 98765-4321</p>
-                </div>
+                <h4 className="text-xl font-semibold text-construction-900 mb-2">Telefone</h4>
+                <p className="text-construction-600">(11) 99999-9999</p>
+                <p className="text-construction-600">(11) 3456-7890</p>
               </div>
               
-              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
-                <div className="w-12 h-12 rounded-full bg-scarlet-100 flex items-center justify-center mb-2 md:mb-0 md:mr-4">
-                  <Mail className="w-5 h-5 text-scarlet-600" />
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4 mx-auto">
+                  <Mail className="w-6 h-6 text-blue-600" />
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">E-mail</h4>
-                  <p className="text-base md:text-lg text-gray-600">contato@contaconnection.com.br</p>
-                  <p className="text-base md:text-lg text-gray-600">atendimento@contaconnection.com.br</p>
-                </div>
+                <h4 className="text-xl font-semibold text-construction-900 mb-2">E-mail</h4>
+                <p className="text-construction-600">contato@construtorafortebase.com.br</p>
+                <p className="text-construction-600">orcamento@construtorafortebase.com.br</p>
               </div>
-              
-              <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left">
-                <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center mb-2 md:mb-0 md:mr-4">
-                  <img src="/lovable-uploads/db774a34-6e4e-4b59-8c0f-b48860054798.png" alt="WhatsApp" className="w-6 h-6" />
+
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4 mx-auto">
+                  <MapPin className="w-6 h-6 text-blue-600" />
                 </div>
-                <div>
-                  <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">WhatsApp</h4>
-                  <p className="text-base md:text-lg text-gray-600">(11) 98765-4321</p>
-                  <p className="text-base md:text-lg text-gray-600 mb-2">Atendimento rápido para dúvidas e agendamentos</p>
-                  <a 
-                    href="https://wa.me/551199999999?text=Olá,%20gostaria%20de%20mais%20informações" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="button-primary inline-flex items-center justify-center w-full md:w-auto"
-                  >
-                    <img src="/lovable-uploads/db774a34-6e4e-4b59-8c0f-b48860054798.png" alt="WhatsApp" className="w-5 h-5 mr-2" />
-                    Fale conosco pelo WhatsApp
-                  </a>
-                </div>
+                <h4 className="text-xl font-semibold text-construction-900 mb-2">Endereço</h4>
+                <p className="text-construction-600">Av. Construção, 1000</p>
+                <p className="text-construction-600">São Paulo - SP</p>
               </div>
             </div>
             
-            <div className="mt-6 p-3 md:p-4 bg-scarlet-50 rounded-lg border border-scarlet-100">
-              <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 text-center">Horário de Atendimento</h4>
-              <p className="text-sm md:text-base text-center text-gray-600">Segunda a Sexta: 08:00 às 18:00</p>
-              <p className="text-sm md:text-base text-center text-gray-600">Sábados: 09:00 às 13:00</p>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center mb-4 mx-auto">
+                <img src="/lovable-uploads/db774a34-6e4e-4b59-8c0f-b48860054798.png" alt="WhatsApp" className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-semibold text-construction-900 mb-2">WhatsApp</h4>
+              <p className="text-construction-600 mb-4">(11) 99999-9999</p>
+              <p className="text-construction-600 mb-4">Atendimento rápido para orçamentos e dúvidas</p>
+              <a 
+                href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="button-accent inline-flex items-center justify-center"
+              >
+                <img src="/lovable-uploads/db774a34-6e4e-4b59-8c0f-b48860054798.png" alt="WhatsApp" className="w-5 h-5 mr-2" />
+                Solicitar Orçamento pelo WhatsApp
+              </a>
+            </div>
+            
+            <div className="mt-8 p-6 bg-construction-50 rounded-lg border border-construction-200">
+              <h4 className="text-xl font-semibold text-construction-900 mb-3 text-center">Horário de Atendimento</h4>
+              <div className="grid md:grid-cols-2 gap-4 text-center">
+                <div>
+                  <p className="font-medium text-construction-800">Segunda a Sexta</p>
+                  <p className="text-construction-600">08:00 às 18:00</p>
+                </div>
+                <div>
+                  <p className="font-medium text-construction-800">Sábados</p>
+                  <p className="text-construction-600">08:00 às 12:00</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

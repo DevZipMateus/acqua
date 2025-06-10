@@ -5,24 +5,24 @@ import { Quote } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    name: "Elina Santos",
-    position: "Diretora da BJT Transportadora",
-    quote: "A equipe sempre entrega nossos documentos com pontualidade, além de oferecer um suporte atencioso quando precisamos de ajuda. Recomendo fortemente!",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    name: "João Mendes",
+    position: "Proprietário - Casa Residencial",
+    quote: "A ForteBase construiu nossa casa dos sonhos! A qualidade dos materiais e o profissionalismo da equipe superaram nossas expectativas. Recomendo sem hesitar!",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
   },
   {
     id: 2,
-    name: "Joel Gomes",
-    position: "Administrador da Torque Implementos",
-    quote: "O que mais me impressiona é o comprometimento da equipe com a satisfação do cliente. Eles realmente se importam com as necessidades da minha empresa.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    name: "Maria Santos",
+    position: "Empresária - Reforma Comercial",
+    quote: "Reforma do nosso escritório foi feita com muito cuidado e dentro do prazo. A equipe é pontual, organizada e sempre mantém o cliente informado sobre o progresso.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80"
   },
   {
     id: 3,
-    name: "João Meneses",
-    position: "Diretor da Ágil Mecânica",
-    quote: "O atendimento é prestativo e rápido, sempre esclarecendo minhas dúvidas. Os serviços contábeis são executados com excelência e profissionalismo.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    name: "Ricardo Oliveira",
+    position: "Diretor - Galpão Industrial",
+    quote: "Construíram nosso galpão industrial com excelência técnica. O projeto foi executado conforme especificado e a obra entregue no prazo combinado. Parceria de confiança!",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
   }
 ];
 
@@ -64,18 +64,18 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section className="section-padding bg-gradient-to-b from-white to-scarlet-50" id="testimonials">
+    <section className="section-padding construction-gradient" id="testimonials">
       <div className="container mx-auto px-4" ref={sectionRef}>
         <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fadeIn">
-          <span className="inline-block py-1 px-3 rounded-full text-sm font-medium bg-scarlet-100 text-scarlet-600 mb-4">
+          <span className="inline-block py-2 px-4 rounded-full text-sm font-medium bg-blue-100 text-blue-700 mb-4">
             Depoimentos
           </span>
           <h2 className="heading-lg mb-6">
             O que nossos clientes dizem
           </h2>
           <p className="subtitle">
-            A satisfação dos nossos clientes é o nosso maior indicador de sucesso.
-            Confira os depoimentos de quem já confia em nossos serviços.
+            A satisfação dos nossos clientes é nosso maior patrimônio.
+            Veja o que eles falam sobre nossos serviços.
           </p>
         </div>
 
@@ -104,10 +104,10 @@ const TestimonialsSection = () => {
                   </div>
                 </div>
                 <div className="text-center md:text-left">
-                  <Quote className="text-scarlet-300 mb-2 w-10 h-10 mx-auto md:mx-0" />
-                  <p className="text-lg text-gray-700 italic mb-4">{testimonial.quote}</p>
-                  <h4 className="text-xl font-bold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-scarlet-600">{testimonial.position}</p>
+                  <Quote className="text-blue-300 mb-2 w-10 h-10 mx-auto md:mx-0" />
+                  <p className="text-lg text-construction-700 italic mb-4">{testimonial.quote}</p>
+                  <h4 className="text-xl font-bold text-construction-900">{testimonial.name}</h4>
+                  <p className="text-blue-600">{testimonial.position}</p>
                 </div>
               </div>
             ))}
@@ -119,7 +119,7 @@ const TestimonialsSection = () => {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={`w-3 h-3 rounded-full mx-1 transition-all duration-300 ${
-                  index === activeIndex ? 'bg-scarlet-500 w-8' : 'bg-gray-300'
+                  index === activeIndex ? 'bg-blue-500 w-8' : 'bg-construction-300'
                 }`}
                 aria-label={`Ver depoimento ${index + 1}`}
               />

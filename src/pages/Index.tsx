@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import TeamSection from "@/components/TeamSection";
-import PlansSection from "@/components/PlansSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
@@ -18,22 +18,22 @@ const Index = () => {
         <div id="hero">
           <HeroSection />
         </div>
-        <div className="bg-gradient-to-b from-white to-wine-50" id="services">
+        <div id="services">
           <ServicesSection />
         </div>
-        <div className="bg-wine-50" id="about">
+        <div id="about">
           <AboutSection />
         </div>
-        <div className="bg-gradient-to-b from-wine-50 to-white" id="team">
+        <div id="projects">
+          <ProjectsSection />
+        </div>
+        <div id="team">
           <TeamSection />
         </div>
-        <div className="bg-wine-50" id="plans">
-          <PlansSection />
-        </div>
-        <div className="bg-white" id="testimonials">
+        <div id="testimonials">
           <TestimonialsSection />
         </div>
-        <div className="bg-wine-50" id="contact">
+        <div id="contact">
           <ContactForm />
         </div>
       </main>
