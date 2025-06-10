@@ -80,7 +80,7 @@ const TestimonialsSection = () => {
   return (
     <section className="section-padding construction-gradient" id="testimonials">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 opacity-0 animate-fadeIn">
+        <div className={`text-center max-w-3xl mx-auto mb-12 sm:mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100 animate-fadeIn' : 'opacity-0'}`}>
           <span className="inline-block py-2 px-4 rounded-full text-sm font-medium bg-blue-100 text-blue-700 mb-4">
             Depoimentos
           </span>
@@ -94,18 +94,17 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative h-auto min-h-[300px] sm:min-h-[350px] lg:h-[400px]">
+          <div className="relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] overflow-hidden rounded-2xl">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={testimonial.id}
-                className={`absolute inset-0 flex flex-col lg:flex-row gap-6 sm:gap-8 items-center justify-center transition-all duration-700 ease-in-out p-4 sm:p-6 lg:p-8 glass-card rounded-2xl ${
+                className={`absolute inset-0 flex flex-col lg:flex-row gap-6 sm:gap-8 items-center justify-center p-4 sm:p-6 lg:p-8 glass-card transition-all duration-700 ease-in-out ${
                   index === activeIndex 
-                    ? 'opacity-100 translate-x-0' 
+                    ? 'opacity-100 translate-x-0 z-10' 
                     : index < activeIndex 
-                      ? 'opacity-0 -translate-x-full' 
-                      : 'opacity-0 translate-x-full'
-                } ${isVisible ? 'animate-fadeIn' : 'opacity-0'}`}
-                style={{ animationDelay: '400ms' }}
+                      ? 'opacity-0 -translate-x-full z-0' 
+                      : 'opacity-0 translate-x-full z-0'
+                }`}
               >
                 <div className="flex-shrink-0 order-1 lg:order-none">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-white shadow-md mx-auto">
@@ -132,8 +131,8 @@ const TestimonialsSection = () => {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full mx-1 transition-all duration-300 ${
-                  index === activeIndex ? 'bg-blue-500 w-6 sm:w-8' : 'bg-construction-300'
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full mx-1 transition-all duration-300 hover:scale-110 ${
+                  index === activeIndex ? 'bg-blue-500 w-6 sm:w-8' : 'bg-construction-300 hover:bg-construction-400'
                 }`}
                 aria-label={`Ver depoimento ${index + 1}`}
               />
