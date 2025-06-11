@@ -49,7 +49,7 @@ export function useTablet() {
   return isTablet;
 }
 
-// Hook for screen size detection
+// Hook for screen size detection with ultra-wide support
 export function useScreenSize() {
   const [screenSize, setScreenSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
@@ -74,7 +74,20 @@ export function useScreenSize() {
     ...screenSize,
     isMobile: screenSize.width < 768,
     isTablet: screenSize.width >= 768 && screenSize.width < 1024,
-    isDesktop: screenSize.width >= 1024,
-    isLargeDesktop: screenSize.width >= 1440
+    isDesktop: screenSize.width >= 1024 && screenSize.width < 1536,
+    isLargeDesktop: screenSize.width >= 1536,
+    isUltraWide: screenSize.width >= 1280 && screenSize.height <= 1920,
+    aspectRatio: screenSize.width / screenSize.height
+  };
+}
+
+// Hook specifically for ultra-wide screens like 1080x1920
+export function useUltraWide() {
+  const { width, height } = useScreenSize();
+  
+  return {
+    isUltraWide: width >= 1080 && height <= 1920,
+    isPortraitUltraWide: width < height && width >= 1080,
+    needsSpecialLayout: width >= 1280 && height <= 1920
   };
 }

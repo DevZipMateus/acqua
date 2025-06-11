@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useScreenSize, useUltraWide } from '@/hooks/use-mobile';
 
 const heroSlides = [
   {
@@ -30,6 +31,8 @@ const heroSlides = [
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { isMobile, isTablet } = useScreenSize();
+  const { isUltraWide, needsSpecialLayout } = useUltraWide();
 
   useEffect(() => {
     setIsVisible(true);
@@ -56,7 +59,11 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen min-h-[600px] max-h-screen overflow-hidden" id="hero">
+    <section className={`relative overflow-hidden ${
+      needsSpecialLayout 
+        ? 'h-screen min-h-[800px] max-h-[1000px]' 
+        : 'h-screen min-h-[600px] max-h-screen'
+    }`} id="hero">
       {/* Carousel */}
       <div className="relative h-full">
         {heroSlides.map((slide, index) => (
@@ -77,23 +84,71 @@ const HeroSection = () => {
 
         {/* Content */}
         <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <span className={`inline-block py-2 px-3 sm:px-4 rounded-full text-xs sm:text-sm font-medium bg-yellow-500 text-construction-900 mb-4 sm:mb-6 opacity-0 ${isVisible ? 'animate-fadeIn' : ''}`}>
+          <div className="container mx-auto responsive-padding">
+            <div className={`mx-auto ${
+              needsSpecialLayout ? 'max-w-6xl' : 'max-w-4xl'
+            }`}>
+              <span className={`inline-block rounded-full font-medium bg-yellow-500 text-construction-900 opacity-0 ${
+                isVisible ? 'animate-fadeIn' : ''
+              } ${
+                isMobile 
+                  ? 'py-1.5 px-3 text-xs mb-4' 
+                  : isTablet 
+                    ? 'py-2 px-4 text-sm mb-6'
+                    : needsSpecialLayout
+                      ? 'py-3 px-6 text-lg mb-8'
+                      : 'py-2 px-4 text-sm mb-6'
+              }`}>
                 Construtora ForteBase
               </span>
-              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight opacity-0 ${isVisible ? 'animate-slideDown' : ''}`}>
+              <h1 className={`font-bold leading-tight opacity-0 ${
+                isVisible ? 'animate-slideDown' : ''
+              } ${
+                isMobile 
+                  ? 'text-2xl mb-4' 
+                  : isTablet 
+                    ? 'text-3xl mb-6'
+                    : needsSpecialLayout
+                      ? 'text-6xl xl:text-7xl mb-8'
+                      : 'text-4xl lg:text-5xl xl:text-6xl mb-6'
+              }`}>
                 {heroSlides[currentSlide].title}
               </h1>
-              <p className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed opacity-0 ${isVisible ? 'animate-slideDown delay-200' : ''}`}>
+              <p className={`leading-relaxed mx-auto opacity-0 ${
+                isVisible ? 'animate-slideDown delay-200' : ''
+              } ${
+                isMobile 
+                  ? 'text-base mb-6 max-w-lg' 
+                  : isTablet 
+                    ? 'text-lg mb-8 max-w-xl'
+                    : needsSpecialLayout
+                      ? 'text-2xl mb-10 max-w-4xl'
+                      : 'text-xl mb-8 max-w-2xl'
+              }`}>
                 {heroSlides[currentSlide].subtitle}
               </p>
-              <div className={`flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 opacity-0 ${isVisible ? 'animate-slideDown delay-300' : ''}`}>
-                <Link to="/contact" className="button-accent group px-6 py-3 text-sm sm:text-base">
+              <div className={`flex justify-center opacity-0 ${
+                isVisible ? 'animate-slideDown delay-300' : ''
+              } ${
+                isMobile 
+                  ? 'flex-col gap-3' 
+                  : isTablet 
+                    ? 'flex-row gap-4'
+                    : needsSpecialLayout
+                      ? 'flex-row gap-8'
+                      : 'flex-col sm:flex-row gap-4'
+              }`}>
+                <Link to="/contact" className={`button-accent group ${
+                  needsSpecialLayout ? 'px-10 py-5 text-xl' : 'px-6 py-3'
+                }`}>
                   {heroSlides[currentSlide].cta}
-                  <ArrowRight className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className={`inline-block ml-2 transition-transform group-hover:translate-x-1 ${
+                    needsSpecialLayout ? 'w-6 h-6' : 'w-4 h-4 sm:w-5 sm:h-5'
+                  }`} />
                 </Link>
-                <Link to="/services" className="button-secondary px-6 py-3 text-sm sm:text-base">
+                <Link to="/services" className={`button-secondary ${
+                  needsSpecialLayout ? 'px-10 py-5 text-xl' : 'px-6 py-3'
+                }`}>
                   Nossos serviços
                 </Link>
               </div>
@@ -104,27 +159,47 @@ const HeroSection = () => {
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20"
+          className={`absolute top-1/2 -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20 ${
+            isMobile 
+              ? 'left-2 w-10 h-10' 
+              : needsSpecialLayout
+                ? 'left-8 w-16 h-16'
+                : 'left-4 w-12 h-12'
+          }`}
           aria-label="Slide anterior"
         >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ChevronLeft className={needsSpecialLayout ? 'w-8 h-8' : 'w-5 h-5 sm:w-6 sm:h-6'} />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20"
+          className={`absolute top-1/2 -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20 ${
+            isMobile 
+              ? 'right-2 w-10 h-10' 
+              : needsSpecialLayout
+                ? 'right-8 w-16 h-16'
+                : 'right-4 w-12 h-12'
+          }`}
           aria-label="Próximo slide"
         >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ChevronRight className={needsSpecialLayout ? 'w-8 h-8' : 'w-5 h-5 sm:w-6 sm:h-6'} />
         </button>
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+        <div className={`absolute left-1/2 -translate-x-1/2 flex space-x-2 z-20 ${
+          needsSpecialLayout ? 'bottom-12' : 'bottom-4 sm:bottom-8'
+        }`}>
           {heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-                index === currentSlide ? 'bg-yellow-500 w-6 sm:w-8' : 'bg-white bg-opacity-50'
+              className={`rounded-full transition-all ${
+                index === currentSlide 
+                  ? needsSpecialLayout 
+                    ? 'bg-yellow-500 w-12 h-4' 
+                    : 'bg-yellow-500 w-6 sm:w-8 h-2 sm:h-3'
+                  : needsSpecialLayout
+                    ? 'bg-white bg-opacity-50 w-4 h-4'
+                    : 'bg-white bg-opacity-50 w-2 h-2 sm:w-3 sm:h-3'
               }`}
               aria-label={`Ir para slide ${index + 1}`}
             />
