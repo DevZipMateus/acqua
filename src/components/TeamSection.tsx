@@ -1,6 +1,7 @@
 
 import { Mail, Linkedin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useScreenSize } from '@/hooks/use-mobile';
 
 const teamMembers = [
   {
@@ -38,23 +39,31 @@ const teamMembers = [
 ];
 
 const TeamSection = () => {
+  const { isMobile, isTablet } = useScreenSize();
+
   return (
-    <section className="py-12 sm:py-16 bg-white" id="team">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <span className="inline-block py-2 px-4 rounded-full text-sm font-semibold bg-construction-100 text-construction-600 mb-4">
+    <section className="py-8 sm:py-12 md:py-16 bg-white" id="team">
+      <div className="container mx-auto responsive-padding">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-12">
+          <span className="inline-block py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm font-semibold bg-construction-100 text-construction-600 mb-3 sm:mb-4">
             Nossa Equipe
           </span>
-          <h2 className="heading-lg mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-construction-800 tracking-tight mb-3 sm:mb-4 lg:mb-6">
             Profissionais experientes e <span className="text-gradient">qualificados</span>
           </h2>
-          <p className="text-construction-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-construction-600 text-sm sm:text-base lg:text-lg leading-relaxed px-2 sm:px-0">
             Nossa equipe é formada por engenheiros, arquitetos e técnicos especializados,
             comprometidos em entregar projetos de excelência.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className={`grid gap-3 sm:gap-4 md:gap-6 ${
+          isMobile 
+            ? 'grid-cols-1' 
+            : isTablet 
+              ? 'grid-cols-2' 
+              : 'grid-cols-2 lg:grid-cols-4'
+        }`}>
           {teamMembers.map((member, index) => (
             <Card 
               key={index} 
@@ -69,19 +78,39 @@ const TeamSection = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-construction-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center">
-                    <div className="flex gap-2 sm:gap-3 p-3 sm:p-4 mb-2">
-                      <a href={`mailto:${member.email}`} className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
-                        <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <div className="flex gap-2 sm:gap-3 p-2 sm:p-3 md:p-4 mb-1 sm:mb-2">
+                      <a 
+                        href={`mailto:${member.email}`} 
+                        className={`bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors ${
+                          isMobile ? 'w-6 h-6' : 'w-7 h-7 sm:w-8 sm:h-8'
+                        }`}
+                      >
+                        <Mail className={isMobile ? 'w-3 h-3' : 'w-3 h-3 sm:w-4 sm:h-4'} />
                       </a>
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
-                        <Linkedin className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <a 
+                        href={member.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className={`bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors ${
+                          isMobile ? 'w-6 h-6' : 'w-7 h-7 sm:w-8 sm:h-8'
+                        }`}
+                      >
+                        <Linkedin className={isMobile ? 'w-3 h-3' : 'w-3 h-3 sm:w-4 sm:h-4'} />
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="p-3 sm:p-4 text-center bg-construction-50">
-                  <h3 className="text-lg sm:text-xl font-bold text-construction-800">{member.name}</h3>
-                  <p className="text-sm sm:text-base text-blue-600 font-medium">{member.position}</p>
+                <div className="p-2 sm:p-3 md:p-4 text-center bg-construction-50">
+                  <h3 className={`font-bold text-construction-800 ${
+                    isMobile ? 'text-base' : 'text-base sm:text-lg md:text-xl'
+                  }`}>
+                    {member.name}
+                  </h3>
+                  <p className={`text-blue-600 font-medium ${
+                    isMobile ? 'text-xs' : 'text-xs sm:text-sm md:text-base'
+                  }`}>
+                    {member.position}
+                  </p>
                 </div>
               </CardContent>
             </Card>

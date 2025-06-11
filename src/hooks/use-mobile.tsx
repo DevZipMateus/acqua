@@ -26,3 +26,55 @@ export function useMobile(breakpoint = 768) {
 
   return isMobile;
 }
+
+// Hook for tablet detection
+export function useTablet() {
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const checkIsTablet = () => {
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
+    };
+    
+    checkIsTablet();
+    window.addEventListener('resize', checkIsTablet);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsTablet);
+    };
+  }, []);
+
+  return isTablet;
+}
+
+// Hook for screen size detection
+export function useScreenSize() {
+  const [screenSize, setScreenSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return {
+    ...screenSize,
+    isMobile: screenSize.width < 768,
+    isTablet: screenSize.width >= 768 && screenSize.width < 1024,
+    isDesktop: screenSize.width >= 1024,
+    isLargeDesktop: screenSize.width >= 1440
+  };
+}
