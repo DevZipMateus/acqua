@@ -1,11 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 0%;
     --foreground: 210 22% 22%;
     --card: 0 0% 100%;
     --card-foreground: 210 22% 22%;
@@ -55,7 +54,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
