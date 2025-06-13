@@ -15,25 +15,25 @@ const Index = () => {
     <div className="min-h-screen bg-black w-full overflow-x-hidden">
       <Header />
       <main className="w-full">
-        <div id="hero">
+        <div id="hero" className="w-full">
           <HeroSection />
         </div>
-        <div id="services">
+        <div id="services" className="w-full">
           <ServicesSection />
         </div>
-        <div id="about">
+        <div id="about" className="w-full">
           <AboutSection />
         </div>
-        <div id="projects">
+        <div id="projects" className="w-full">
           <ProjectsSection />
         </div>
-        <div id="team">
+        <div id="team" className="w-full">
           <TeamSection />
         </div>
-        <div id="testimonials">
+        <div id="testimonials" className="w-full">
           <TestimonialsSection />
         </div>
-        <div id="contact">
+        <div id="contact" className="w-full">
           <ContactForm />
         </div>
       </main>

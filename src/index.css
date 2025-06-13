@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,7 +78,7 @@
   }
   
   .subtitle {
-    @apply text-sm sm:text-base md:text-lg lg:text-xl text-construction-600 max-w-3xl;
+    @apply text-sm sm:text-base md:text-lg lg:text-xl text-construction-600 max-w-none;
   }
   
   .text-gradient {
@@ -118,6 +119,20 @@
 
   .hero-gradient {
     @apply bg-gradient-to-b from-blue-50 to-white;
+  }
+
+  /* Enhanced container system for full-width layouts */
+  .container {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16;
+    max-width: none;
+  }
+
+  .container-content {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .container-wide {
+    @apply max-w-none mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 3xl:px-24;
   }
 }
 
@@ -212,40 +227,48 @@
     @apply my-4 sm:my-6 lg:py-8 xl:py-12;
   }
 
-  /* Enhanced responsive breakpoints */
+  /* Enhanced responsive breakpoints for HD/Full HD */
   .xs-text {
-    @apply text-xs sm:text-sm lg:text-base;
+    @apply text-xs sm:text-sm lg:text-base xl:text-lg;
   }
 
   .responsive-padding {
-    @apply px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16;
+    @apply px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24;
   }
 
   .responsive-margin {
-    @apply mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-12;
+    @apply mx-4 sm:mx-6 md:mx-8 lg:mx-12 xl:mx-16 2xl:mx-20;
   }
 
   .responsive-gap {
-    @apply gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12;
+    @apply gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-16;
   }
 
-  /* Specific optimizations for 1080x1920 screens */
+  /* Optimized grid layouts for wider screens */
   .ultra-wide-grid {
-    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5;
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6;
   }
 
   .ultra-wide-spacing {
-    @apply space-y-4 sm:space-y-6 lg:space-y-8 xl:space-y-12 2xl:space-y-16;
+    @apply space-y-4 sm:space-y-6 lg:space-y-8 xl:space-y-12 2xl:space-y-16 3xl:space-y-20;
   }
 
   .ultra-wide-text {
-    @apply text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl;
+    @apply text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl;
+  }
+
+  /* Full-width utilities */
+  .full-width {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 }
 
+/* Remove root max-width limitation */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 0;
   text-align: center;
 }
@@ -275,17 +298,15 @@
   }
 }
 
-/* Ultra-wide and high resolution optimizations */
-@media (min-width: 1280px) and (max-height: 1920px) {
-  .container {
-    max-width: 1200px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+/* Enhanced HD and Full HD optimizations */
+@media (min-width: 1280px) {
+  .container-content {
+    max-width: 1400px;
   }
 
   .section-padding {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 
   .heading-xl {
@@ -304,22 +325,57 @@
   }
 }
 
+@media (min-width: 1536px) {
+  .container-content {
+    max-width: 1600px;
+  }
+
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .heading-xl {
+    font-size: 5rem;
+    line-height: 1.05;
+  }
+
+  .heading-lg {
+    font-size: 3.5rem;
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    line-height: 1.65;
+  }
+}
+
+/* Ultra-wide screens (1920px+) */
+@media (min-width: 1920px) {
+  .container-content {
+    max-width: 1800px;
+  }
+
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .responsive-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .responsive-gap {
+    gap: 5rem;
+  }
+}
+
 /* Improved touch targets for mobile */
 @media (max-width: 768px) {
   button, a {
     min-height: 44px;
     min-width: 44px;
-  }
-}
-
-/* Additional breakpoint for ultra-wide screens */
-@media (min-width: 1536px) {
-  .responsive-padding {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-
-  .responsive-gap {
-    gap: 4rem;
   }
 }

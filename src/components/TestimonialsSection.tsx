@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Quote } from 'lucide-react';
 import { useScreenSize } from '@/hooks/use-mobile';
@@ -80,91 +79,93 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section className="section-padding construction-gradient" id="testimonials">
-      <div className="container mx-auto responsive-padding" ref={sectionRef}>
-        <div className={`text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100 animate-fadeIn' : 'opacity-0'}`}>
-          <span className="inline-block py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-700 mb-3 sm:mb-4">
-            Depoimentos
-          </span>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-construction-800 tracking-tight mb-3 sm:mb-4 lg:mb-6">
-            O que nossos clientes dizem
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-construction-600 max-w-3xl px-2 sm:px-0">
-            A satisfação dos nossos clientes é nosso maior patrimônio.
-            Veja o que eles falam sobre nossos serviços.
-          </p>
-        </div>
-
-        <div className="max-w-5xl mx-auto">
-          <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl ${
-            isMobile ? 'min-h-[280px]' : isTablet ? 'min-h-[320px]' : 'min-h-[400px]'
-          }`}>
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={testimonial.id}
-                className={`absolute inset-0 flex ${
-                  isMobile ? 'flex-col' : 'flex-col lg:flex-row'
-                } gap-4 sm:gap-6 lg:gap-8 items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 glass-card transition-all duration-700 ease-in-out ${
-                  index === activeIndex 
-                    ? 'opacity-100 translate-x-0 z-10' 
-                    : index < activeIndex 
-                      ? 'opacity-0 -translate-x-full z-0' 
-                      : 'opacity-0 translate-x-full z-0'
-                }`}
-              >
-                <div className={`flex-shrink-0 ${isMobile ? 'order-1' : 'order-1 lg:order-none'}`}>
-                  <div className={`${
-                    isMobile ? 'w-12 h-12' : 'w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20'
-                  } rounded-full overflow-hidden border-2 sm:border-4 border-white shadow-md mx-auto`}>
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-                <div className={`text-center ${isMobile ? 'order-2' : 'lg:text-left order-2 lg:order-none'}`}>
-                  <Quote className={`text-blue-300 mb-2 mx-auto ${isMobile ? 'lg:mx-0' : 'lg:mx-0'} ${
-                    isMobile ? 'w-6 h-6' : 'w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10'
-                  }`} />
-                  <p className={`text-construction-700 italic mb-2 sm:mb-3 md:mb-4 leading-relaxed ${
-                    isMobile ? 'text-sm' : 'text-sm sm:text-base lg:text-lg'
-                  }`}>
-                    {testimonial.quote}
-                  </p>
-                  <h4 className={`font-bold text-construction-900 ${
-                    isMobile ? 'text-base' : 'text-base sm:text-lg md:text-xl'
-                  }`}>
-                    {testimonial.name}
-                  </h4>
-                  <p className={`text-blue-600 ${
-                    isMobile ? 'text-xs' : 'text-xs sm:text-sm md:text-base'
-                  }`}>
-                    {testimonial.position}
-                  </p>
-                </div>
-              </div>
-            ))}
+    <section className="section-padding construction-gradient w-full" id="testimonials">
+      <div className="container" ref={sectionRef}>
+        <div className="container-content">
+          <div className={`text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100 animate-fadeIn' : 'opacity-0'}`}>
+            <span className="inline-block py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-700 mb-3 sm:mb-4">
+              Depoimentos
+            </span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-construction-800 tracking-tight mb-3 sm:mb-4 lg:mb-6">
+              O que nossos clientes dizem
+            </h2>
+            <p className="text-sm sm:text-base lg:text-lg text-construction-600 max-w-3xl px-2 sm:px-0">
+              A satisfação dos nossos clientes é nosso maior patrimônio.
+              Veja o que eles falam sobre nossos serviços.
+            </p>
           </div>
 
-          <div className="flex justify-center mt-4 sm:mt-6 lg:mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`rounded-full mx-1 transition-all duration-300 hover:scale-110 ${
-                  isMobile 
-                    ? 'w-2 h-2' 
-                    : 'w-2 h-2 sm:w-3 sm:h-3'
-                } ${
-                  index === activeIndex 
-                    ? `bg-blue-500 ${isMobile ? 'w-4' : 'w-5 sm:w-6 md:w-8'}` 
-                    : 'bg-construction-300 hover:bg-construction-400'
-                }`}
-                aria-label={`Ver depoimento ${index + 1}`}
-              />
-            ))}
+          <div className="max-w-5xl mx-auto">
+            <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl ${
+              isMobile ? 'min-h-[280px]' : isTablet ? 'min-h-[320px]' : 'min-h-[400px]'
+            }`}>
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  key={testimonial.id}
+                  className={`absolute inset-0 flex ${
+                    isMobile ? 'flex-col' : 'flex-col lg:flex-row'
+                  } gap-4 sm:gap-6 lg:gap-8 items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 glass-card transition-all duration-700 ease-in-out ${
+                    index === activeIndex 
+                      ? 'opacity-100 translate-x-0 z-10' 
+                      : index < activeIndex 
+                        ? 'opacity-0 -translate-x-full z-0' 
+                        : 'opacity-0 translate-x-full z-0'
+                  }`}
+                >
+                  <div className={`flex-shrink-0 ${isMobile ? 'order-1' : 'order-1 lg:order-none'}`}>
+                    <div className={`${
+                      isMobile ? 'w-12 h-12' : 'w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20'
+                    } rounded-full overflow-hidden border-2 sm:border-4 border-white shadow-md mx-auto`}>
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name} 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div className={`text-center ${isMobile ? 'order-2' : 'lg:text-left order-2 lg:order-none'}`}>
+                    <Quote className={`text-blue-300 mb-2 mx-auto ${isMobile ? 'lg:mx-0' : 'lg:mx-0'} ${
+                      isMobile ? 'w-6 h-6' : 'w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10'
+                    }`} />
+                    <p className={`text-construction-700 italic mb-2 sm:mb-3 md:mb-4 leading-relaxed ${
+                      isMobile ? 'text-sm' : 'text-sm sm:text-base lg:text-lg'
+                    }`}>
+                      {testimonial.quote}
+                    </p>
+                    <h4 className={`font-bold text-construction-900 ${
+                      isMobile ? 'text-base' : 'text-base sm:text-lg md:text-xl'
+                    }`}>
+                      {testimonial.name}
+                    </h4>
+                    <p className={`text-blue-600 ${
+                      isMobile ? 'text-xs' : 'text-xs sm:text-sm md:text-base'
+                    }`}>
+                      {testimonial.position}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-4 sm:mt-6 lg:mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`rounded-full mx-1 transition-all duration-300 hover:scale-110 ${
+                    isMobile 
+                      ? 'w-2 h-2' 
+                      : 'w-2 h-2 sm:w-3 sm:h-3'
+                  } ${
+                    index === activeIndex 
+                      ? `bg-blue-500 ${isMobile ? 'w-4' : 'w-5 sm:w-6 md:w-8'}` 
+                      : 'bg-construction-300 hover:bg-construction-400'
+                  }`}
+                  aria-label={`Ver depoimento ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
