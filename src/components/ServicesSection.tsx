@@ -3,6 +3,7 @@ import { Home, Wrench, Building2, Clipboard, Hammer, Truck } from 'lucide-react'
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+
 const services = [{
   title: "Construção Residencial",
   description: "Construção de casas e apartamentos com qualidade superior, seguindo todas as normas técnicas e de segurança.",
@@ -34,6 +35,7 @@ const services = [{
   icon: Truck,
   delay: 500
 }];
+
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -93,7 +95,7 @@ const ServicesSection = () => {
         
         <div className="text-center mt-8">
           <Link to="/services">
-            <Button variant="outline" size="lg" className="rounded-full border-blue-600 hover:bg-blue-50 text-zinc-950">
+            <Button variant="outline" size="lg" className="rounded-full border-blue-600 hover:bg-blue-50 text-white bg-black hover:bg-gray-900">
               Ver todos os serviços
             </Button>
           </Link>
