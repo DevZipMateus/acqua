@@ -95,7 +95,7 @@ const ServicesSection = () => {
         
         <div className="text-center mt-8">
           <Link to="/services">
-            <Button variant="outline" size="lg" className="rounded-full border-blue-600 hover:bg-blue-50 text-white bg-black hover:bg-gray-900">
+            <Button variant="outline" size="lg" className="rounded-full border-blue-600 text-white bg-blue-600 hover:bg-blue-700">
               Ver todos os serviços
             </Button>
           </Link>
