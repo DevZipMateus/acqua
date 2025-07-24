@@ -1,40 +1,40 @@
 
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import AboutSection from "@/components/AboutSection";
-import TeamSection from "@/components/TeamSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactForm from "@/components/ContactForm";
+import AcquaAboutSection from "@/components/AcquaAboutSection";
+import AcquaServicesSection from "@/components/AcquaServicesSection";
+import AcquaPlansSection from "@/components/AcquaPlansSection";
+import AcquaTestimonialsSection from "@/components/AcquaTestimonialsSection";
+import AcquaLocationSection from "@/components/AcquaLocationSection";
+import AcquaContactForm from "@/components/AcquaContactForm";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingButton from "@/components/FloatingButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black w-full overflow-x-hidden">
+    <div className="min-h-screen bg-white w-full overflow-x-hidden">
       <Header />
       <main className="w-full">
         <div id="hero" className="w-full">
           <HeroSection />
         </div>
-        <div id="services" className="w-full">
-          <ServicesSection />
-        </div>
         <div id="about" className="w-full">
-          <AboutSection />
+          <AcquaAboutSection />
         </div>
-        <div id="projects" className="w-full">
-          <ProjectsSection />
+        <div id="services" className="w-full">
+          <AcquaServicesSection />
         </div>
-        <div id="team" className="w-full">
-          <TeamSection />
+        <div id="plans" className="w-full">
+          <AcquaPlansSection />
         </div>
         <div id="testimonials" className="w-full">
-          <TestimonialsSection />
+          <AcquaTestimonialsSection />
+        </div>
+        <div id="location" className="w-full">
+          <AcquaLocationSection />
         </div>
         <div id="contact" className="w-full">
-          <ContactForm />
+          <AcquaContactForm />
         </div>
       </main>
       <Footer />

@@ -1,29 +1,28 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useScreenSize, useUltraWide } from '@/hooks/use-mobile';
+import { useScreenSize } from '@/hooks/use-mobile';
 
 const heroSlides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    title: "Transformamos projetos em realidade",
-    subtitle: "Construção de qualidade com mais de 15 anos de experiência no mercado",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Soluções completas em sistemas de água",
+    subtitle: "Especialistas em drenagem, impermeabilização e sistemas de água para construção civil",
     cta: "Solicitar Orçamento"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    title: "Sua casa dos sonhos",
-    subtitle: "Construímos residências modernas e funcionais para toda a família",
-    cta: "Ver Projetos"
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Materiais técnicos de qualidade",
+    subtitle: "Revenda de materiais tecnológicos para construção civil com garantia de qualidade",
+    cta: "Ver Produtos"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    title: "Obras comerciais de excelência",
-    subtitle: "Edifícios comerciais e industriais com tecnologia de ponta",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Filtragem e aquecimento de água",
+    subtitle: "Sistemas completos de filtragem, circulação e aquecimento de água para todos os tipos de projeto",
     cta: "Nossos Serviços"
   }
 ];
@@ -31,7 +30,7 @@ const heroSlides = [
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { isMobile, isTablet } = useScreenSize();
+  const { isMobile } = useScreenSize();
 
   useEffect(() => {
     setIsVisible(true);
@@ -57,6 +56,20 @@ const HeroSection = () => {
     setCurrentSlide(index);
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden h-screen min-h-[600px] max-h-screen w-full" id="hero">
       {/* Carousel */}
@@ -72,7 +85,7 @@ const HeroSection = () => {
               className="h-full bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+              <div className="absolute inset-0 bg-acqua-900 bg-opacity-60"></div>
             </div>
           </div>
         ))}
@@ -81,14 +94,14 @@ const HeroSection = () => {
         <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto">
-              <span className={`inline-block rounded-full font-medium bg-yellow-500 text-construction-900 opacity-0 ${
+              <span className={`inline-block rounded-full font-medium bg-acqua-500 text-white opacity-0 ${
                 isVisible ? 'animate-fadeIn' : ''
               } ${
                 isMobile 
                   ? 'py-1.5 px-3 text-xs mb-4' 
                   : 'py-2 px-4 text-sm mb-6'
               }`}>
-                Construtora ForteBase
+                Acqua Ambiental
               </span>
               <h1 className={`font-bold leading-tight opacity-0 ${
                 isVisible ? 'animate-slideDown' : ''
@@ -115,13 +128,13 @@ const HeroSection = () => {
                   ? 'flex-col gap-3' 
                   : 'flex-col sm:flex-row gap-4'
               }`}>
-                <Link to="/contact" className="button-accent group px-6 py-3">
+                <button onClick={scrollToContact} className="button-accent group px-6 py-3">
                   {heroSlides[currentSlide].cta}
                   <ArrowRight className="inline-block ml-2 transition-transform group-hover:translate-x-1 w-4 h-4 sm:w-5 sm:h-5" />
-                </Link>
-                <Link to="/services" className="button-secondary px-6 py-3">
+                </button>
+                <button onClick={scrollToServices} className="button-secondary px-6 py-3">
                   Nossos serviços
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -159,7 +172,7 @@ const HeroSection = () => {
               onClick={() => goToSlide(index)}
               className={`rounded-full transition-all ${
                 index === currentSlide 
-                  ? 'bg-yellow-500 w-6 sm:w-8 h-2 sm:h-3'
+                  ? 'bg-acqua-500 w-6 sm:w-8 h-2 sm:h-3'
                   : 'bg-white bg-opacity-50 w-2 h-2 sm:w-3 sm:h-3'
               }`}
               aria-label={`Ir para slide ${index + 1}`}

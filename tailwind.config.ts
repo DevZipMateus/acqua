@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss"
 import { fontFamily } from "tailwindcss/defaultTheme"
 
@@ -66,6 +65,21 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Acqua Ambiental brand colors - dark green theme
+        acqua: {
+          50: "#f0f9f4",
+          100: "#dcf2e7",
+          200: "#bce5d1",
+          300: "#8dd1b1",
+          400: "#58b589",
+          500: "#34a268", // Primary green
+          600: "#2a8655",
+          700: "#246d47", // Dark green
+          800: "#1f5a3c",
+          900: "#1c4a32",
+          950: "#0e291c",
+        },
+        // Keep existing construction colors for compatibility
         construction: {
           50: "#f8f9fa",
           100: "#e9ecef",
