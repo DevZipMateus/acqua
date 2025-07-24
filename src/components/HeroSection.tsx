@@ -51,18 +51,18 @@ const HeroSection = () => {
     if (isMobile) {
       return {
         badge: 'text-xs px-3 py-1',
-        title: 'text-3xl md:text-4xl',
-        subtitle: 'text-base md:text-lg',
-        stats: 'text-xl',
+        title: 'text-2xl leading-tight',
+        subtitle: 'text-sm leading-relaxed',
+        stats: 'text-lg',
         statsLabel: 'text-xs'
       };
     }
     if (isTablet) {
       return {
         badge: 'text-sm px-4 py-2',
-        title: 'text-4xl md:text-5xl lg:text-6xl',
-        subtitle: 'text-lg md:text-xl',
-        stats: 'text-2xl md:text-3xl',
+        title: 'text-3xl md:text-4xl leading-tight',
+        subtitle: 'text-base md:text-lg',
+        stats: 'text-xl md:text-2xl',
         statsLabel: 'text-sm'
       };
     }
@@ -91,73 +91,72 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className={`relative z-10 ${containerClass} mx-auto text-center`}>
-        <div className={`${isUltraWide ? 'max-w-6xl' : 'max-w-4xl'} mx-auto`}>
-          <span className={`inline-block rounded-full font-medium bg-acqua-500 text-white mb-6 opacity-0 animate-fadeIn ${textSizes.badge}`}>
+        <div className={`${isUltraWide ? 'max-w-6xl' : isMobile ? 'max-w-sm' : 'max-w-4xl'} mx-auto px-2`}>
+          <span className={`inline-block rounded-full font-medium bg-acqua-500 text-white mb-4 opacity-0 animate-fadeIn ${textSizes.badge}`}>
             Materiais Técnicos para Construção Civil
           </span>
           
-          <h1 className={`font-bold text-white mb-6 leading-tight opacity-0 animate-fadeIn ${textSizes.title}`}>
+          <h1 className={`font-bold text-white mb-4 leading-tight opacity-0 animate-fadeIn ${textSizes.title}`}>
             Soluções em <span className="text-gradient">Sistemas de Água</span>
           </h1>
           
-          <p className={`text-acqua-100 mb-8 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeIn ${textSizes.subtitle}`}>
+          <p className={`text-acqua-100 mb-6 ${isMobile ? 'max-w-xs' : 'max-w-3xl'} mx-auto leading-relaxed opacity-0 animate-fadeIn ${textSizes.subtitle}`}>
             Especialistas em drenagem, impermeabilização, filtragem, aquecimento e circulação de água. 
             Materiais de alta qualidade para seu projeto.
           </p>
 
           {/* Stats */}
-          <div className={`grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 opacity-0 animate-fadeIn`}>
+          <div className={`grid grid-cols-3 gap-2 sm:gap-4 lg:gap-8 mb-6 opacity-0 animate-fadeIn`}>
             <div className="text-center">
-              <div className={`font-bold text-white mb-2 ${textSizes.stats}`}>500+</div>
-              <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Projetos Atendidos</div>
+              <div className={`font-bold text-white mb-1 ${textSizes.stats}`}>500+</div>
+              <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Projetos</div>
             </div>
             <div className="text-center">
-              <div className={`font-bold text-white mb-2 ${textSizes.stats}`}>98%</div>
+              <div className={`font-bold text-white mb-1 ${textSizes.stats}`}>98%</div>
               <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Satisfação</div>
             </div>
             <div className="text-center">
-              <div className={`font-bold text-white mb-2 ${textSizes.stats}`}>24h</div>
+              <div className={`font-bold text-white mb-1 ${textSizes.stats}`}>24h</div>
               <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Atendimento</div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className={`flex flex-col ${isMobile ? 'space-y-4' : 'sm:flex-row sm:space-y-0 sm:space-x-4'} justify-center items-center opacity-0 animate-fadeIn`}>
+          <div className={`flex flex-col space-y-3 justify-center items-center opacity-0 animate-fadeIn mb-6`}>
             <Button 
               onClick={scrollToContact}
-              size={isMobile ? "default" : "lg"}
+              size={isMobile ? "sm" : "lg"}
               className={`bg-acqua-600 hover:bg-acqua-700 text-white font-semibold rounded-full ${
-                isMobile ? 'px-6 py-3 text-base w-full max-w-xs' : 'px-8 py-4 text-lg'
+                isMobile ? 'px-4 py-2 text-sm w-full max-w-xs' : 'px-8 py-4 text-lg'
               }`}
             >
               Solicitar Orçamento
-              <ArrowRight className={`ml-2 ${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
+              <ArrowRight className={`ml-2 ${isMobile ? 'w-3 h-3' : 'w-5 h-5'}`} />
             </Button>
             
             <Button 
               onClick={scrollToServices}
               variant="outline" 
-              size={isMobile ? "default" : "lg"}
+              size={isMobile ? "sm" : "lg"}
               className={`border-2 border-white text-white hover:bg-white hover:text-acqua-900 font-semibold rounded-full ${
-                isMobile ? 'px-6 py-3 text-base w-full max-w-xs' : 'px-8 py-4 text-lg'
+                isMobile ? 'px-4 py-2 text-sm w-full max-w-xs' : 'px-8 py-4 text-lg'
               }`}
             >
-              <Play className={`mr-2 ${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
-              {isMobile ? 'Nossos Serviços' : 'Conheça Nossos Serviços'}
+              <Play className={`mr-2 ${isMobile ? 'w-3 h-3' : 'w-5 h-5'}`} />
+              {isMobile ? 'Serviços' : 'Conheça Nossos Serviços'}
             </Button>
           </div>
 
           {/* Contact Info */}
-          <div className="mt-12 opacity-0 animate-fadeIn">
-            <p className={`text-acqua-200 mb-4 ${isMobile ? 'text-sm' : 'text-base'}`}>Entre em contato agora mesmo:</p>
-            <div className={`flex ${isMobile ? 'flex-col space-y-2' : 'flex-col sm:flex-row'} ${!isMobile ? 'gap-4' : ''} justify-center items-center text-white ${isMobile ? 'text-sm' : 'text-base'}`}>
+          <div className="opacity-0 animate-fadeIn">
+            <p className={`text-acqua-200 mb-3 ${isMobile ? 'text-xs' : 'text-base'}`}>Entre em contato:</p>
+            <div className={`flex flex-col space-y-2 justify-center items-center text-white ${isMobile ? 'text-xs' : 'text-base'}`}>
               <a 
                 href="tel:+5519999300066" 
                 className="flex items-center hover:text-acqua-300 transition-colors"
               >
                 📞 (19) 99930-0066
               </a>
-              {!isMobile && <span className="hidden sm:block text-acqua-400">|</span>}
               <a 
                 href="mailto:comercial@acquaambiental.com.br" 
                 className="flex items-center hover:text-acqua-300 transition-colors"

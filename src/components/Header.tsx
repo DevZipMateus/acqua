@@ -67,14 +67,14 @@ const Header = () => {
   };
 
   const getHeaderPadding = () => {
-    if (isMobile) return 'px-4 py-3';
-    if (isTablet) return 'px-6 py-3';
+    if (isMobile) return 'px-3 py-2';
+    if (isTablet) return 'px-4 py-3';
     return 'px-8 py-4';
   };
 
   const getLogoSize = () => {
-    if (isMobile) return 'h-10';
-    if (isTablet) return 'h-11';
+    if (isMobile) return 'h-8';
+    if (isTablet) return 'h-10';
     return 'h-12';
   };
   
@@ -96,11 +96,11 @@ const Header = () => {
           </button>
           
           <nav className="hidden lg:block">
-            <ul className={`flex ${isMobile ? 'space-x-4' : 'space-x-6'}`}>
+            <ul className="flex space-x-6">
               <li>
                 <button 
                   onClick={() => scrollToSection('hero')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('hero')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('hero')} transition-colors duration-300`}
                 >
                   Início
                 </button>
@@ -108,7 +108,7 @@ const Header = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('about')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('about')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('about')} transition-colors duration-300`}
                 >
                   Sobre
                 </button>
@@ -116,7 +116,7 @@ const Header = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('services')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('services')} transition-colors duration-300`}
                 >
                   Serviços
                 </button>
@@ -124,7 +124,7 @@ const Header = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('plans')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('plans')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('plans')} transition-colors duration-300`}
                 >
                   Planos
                 </button>
@@ -132,7 +132,7 @@ const Header = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('testimonials')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('testimonials')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('testimonials')} transition-colors duration-300`}
                 >
                   Depoimentos
                 </button>
@@ -140,7 +140,7 @@ const Header = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('location')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('location')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('location')} transition-colors duration-300`}
                 >
                   Localização
                 </button>
@@ -148,7 +148,7 @@ const Header = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('contact')} 
-                  className={`${isMobile ? 'text-xs' : 'text-sm'} font-medium ${getLinkColor('contact')} transition-colors duration-300`}
+                  className={`text-sm font-medium ${getLinkColor('contact')} transition-colors duration-300`}
                 >
                   Contato
                 </button>
@@ -157,20 +157,20 @@ const Header = () => {
           </nav>
           
           <button 
-            className={`block lg:hidden ${getMenuButtonColor()} hover:text-acqua-400 transition-colors`} 
+            className={`block lg:hidden ${getMenuButtonColor()} hover:text-acqua-400 transition-colors p-1`} 
             onClick={toggleMenu} 
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
       
       {isMenuOpen && (isMobile || isTablet) && (
-        <div className="fixed inset-0 bg-white z-50 pt-20 overflow-y-auto">
+        <div className="fixed inset-0 bg-white z-50 pt-16 overflow-y-auto">
           <div className={`container mx-auto ${getHeaderPadding()}`}>
             <nav>
-              <ul className="flex flex-col space-y-4">
+              <ul className="flex flex-col space-y-3">
                 {[
                   { id: 'hero', label: 'Início' },
                   { id: 'about', label: 'Sobre' },
@@ -183,7 +183,7 @@ const Header = () => {
                   <li key={item.id}>
                     <button 
                       onClick={() => scrollToSection(item.id)} 
-                      className={`${isMobile ? 'text-lg' : 'text-xl'} font-medium text-acqua-700 hover:text-acqua-500 block py-2 transition-colors w-full text-left`}
+                      className={`${isMobile ? 'text-base' : 'text-lg'} font-medium text-acqua-700 hover:text-acqua-500 block py-2 transition-colors w-full text-left`}
                     >
                       {item.label}
                     </button>
@@ -192,9 +192,9 @@ const Header = () => {
               </ul>
             </nav>
             
-            <div className="mt-8 border-t border-gray-100 pt-6">
-              <h3 className={`${isMobile ? 'text-sm' : 'text-base'} font-semibold text-acqua-600 mb-4`}>Contato</h3>
-              <div className="flex flex-col space-y-3">
+            <div className="mt-6 border-t border-gray-100 pt-4">
+              <h3 className={`${isMobile ? 'text-sm' : 'text-base'} font-semibold text-acqua-600 mb-3`}>Contato</h3>
+              <div className="flex flex-col space-y-2">
                 <a href="mailto:comercial@acquaambiental.com.br" className={`flex items-center text-acqua-700 hover:text-acqua-500 transition-colors ${isMobile ? 'text-sm' : 'text-base'}`}>
                   <Mail className={`mr-2 text-acqua-500 ${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                   comercial@acquaambiental.com.br
@@ -208,10 +208,10 @@ const Header = () => {
             
             <button 
               onClick={toggleMenu} 
-              className="absolute top-4 right-4 p-2 rounded-full bg-acqua-100 text-acqua-600 hover:bg-acqua-200 transition-colors"
+              className="absolute top-3 right-3 p-2 rounded-full bg-acqua-100 text-acqua-600 hover:bg-acqua-200 transition-colors"
               aria-label="Fechar menu"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
