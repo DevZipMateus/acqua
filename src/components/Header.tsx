@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail, Phone, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
@@ -72,15 +71,13 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <button 
             onClick={() => scrollToSection('hero')} 
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-3"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-acqua-500 to-acqua-600 rounded-lg flex items-center justify-center shadow-md">
-              <span className="text-white font-bold text-lg">A</span>
-            </div>
-            <div>
-              <span className="text-xl font-bold text-acqua-500">Acqua</span>
-              <span className={`text-xl font-bold ml-1 ${isScrolled ? 'text-acqua-800' : 'text-acqua-400'}`}>Ambiental</span>
-            </div>
+            <img 
+              src="/lovable-uploads/1efb30e4-9827-4086-8d02-9406b8f1f8b4.png" 
+              alt="Acqua Ambiental" 
+              className="h-12 w-auto"
+            />
           </button>
           
           <nav className="hidden md:block">
