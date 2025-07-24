@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Droplets, Shield, Filter, Thermometer, Zap, Wrench } from 'lucide-react';
 import { useResponsive, useContainer } from '@/hooks/use-responsive';
@@ -44,8 +43,8 @@ const services = [
 
 const AcquaServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { isMobile, isTablet, getGridCols } = useContainer();
-  const { containerClass, spacing } = useContainer();
+  const { isMobile, isTablet } = useResponsive();
+  const { containerClass, spacing, getGridCols } = useContainer();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
