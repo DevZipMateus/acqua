@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Droplets, Shield, Filter, Thermometer, PipeIcon as Pipe, Wrench } from 'lucide-react';
+import { Droplets, Shield, Filter, Thermometer, Zap, Wrench } from 'lucide-react';
 
 const services = [
   {
@@ -30,7 +30,7 @@ const services = [
   {
     title: "Circulação de Água",
     description: "Bombas e sistemas de circulação para piscinas, reservatórios e sistemas hidráulicos.",
-    icon: Pipe,
+    icon: Zap,
     delay: 400
   },
   {
