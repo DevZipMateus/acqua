@@ -1,59 +1,40 @@
 
-import { useState, useEffect } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useScreenSize } from '@/hooks/use-mobile';
-
-const heroSlides = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    title: "Soluções completas em sistemas de água",
-    subtitle: "Especialistas em drenagem, impermeabilização e sistemas de água para construção civil",
-    cta: "Solicitar Orçamento"
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    title: "Materiais técnicos de qualidade",
-    subtitle: "Revenda de materiais tecnológicos para construção civil com garantia de qualidade",
-    cta: "Ver Produtos"
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    title: "Filtragem e aquecimento de água",
-    subtitle: "Sistemas completos de filtragem, circulação e aquecimento de água para todos os tipos de projeto",
-    cta: "Nossos Serviços"
-  }
-];
+import { useEffect, useRef } from 'react';
+import { ArrowRight, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const { isMobile } = useScreenSize();
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fadeIn');
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const scrollToContact = () => {
@@ -63,121 +44,98 @@ const HeroSection = () => {
     }
   };
 
-  const scrollToServices = () => {
-    const servicesSection = document.getElementById('services');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="relative overflow-hidden h-screen min-h-[600px] max-h-screen w-full" id="hero">
-      {/* Carousel */}
-      <div className="relative h-full">
-        {heroSlides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <div
-              className="h-full bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            >
-              <div className="absolute inset-0 bg-acqua-900 bg-opacity-60"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden acqua-gradient" ref={sectionRef}>
+      {/* Background Video/Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+          alt="Sistemas de água e drenagem" 
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-acqua-900/50 to-acqua-600/30"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto text-center px-4">
+        <div className="max-w-4xl mx-auto">
+          <span className="inline-block py-2 px-4 rounded-full text-sm font-medium bg-acqua-500 text-white mb-6 opacity-0 animate-fadeIn">
+            Materiais Técnicos para Construção Civil
+          </span>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight opacity-0 animate-fadeIn">
+            Soluções em <span className="text-gradient">Sistemas de Água</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl lg:text-2xl text-acqua-100 mb-8 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeIn">
+            Especialistas em drenagem, impermeabilização, filtragem, aquecimento e circulação de água. 
+            Materiais de alta qualidade para seu projeto.
+          </p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-8 mb-10 opacity-0 animate-fadeIn">
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">500+</div>
+              <div className="text-acqua-200 text-sm md:text-base">Projetos Atendidos</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">98%</div>
+              <div className="text-acqua-200 text-sm md:text-base">Satisfação</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">24h</div>
+              <div className="text-acqua-200 text-sm md:text-base">Atendimento</div>
             </div>
           </div>
-        ))}
 
-        {/* Content */}
-        <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10">
-          <div className="container mx-auto">
-            <div className="max-w-4xl mx-auto">
-              <span className={`inline-block rounded-full font-medium bg-acqua-500 text-white opacity-0 ${
-                isVisible ? 'animate-fadeIn' : ''
-              } ${
-                isMobile 
-                  ? 'py-1.5 px-3 text-xs mb-4' 
-                  : 'py-2 px-4 text-sm mb-6'
-              }`}>
-                Acqua Ambiental
-              </span>
-              <h1 className={`font-bold leading-tight opacity-0 ${
-                isVisible ? 'animate-slideDown' : ''
-              } ${
-                isMobile 
-                  ? 'text-2xl mb-4' 
-                  : 'text-4xl lg:text-5xl xl:text-6xl mb-6'
-              }`}>
-                {heroSlides[currentSlide].title}
-              </h1>
-              <p className={`leading-relaxed mx-auto opacity-0 ${
-                isVisible ? 'animate-slideDown delay-200' : ''
-              } ${
-                isMobile 
-                  ? 'text-base mb-6 max-w-lg' 
-                  : 'text-xl mb-8 max-w-2xl'
-              }`}>
-                {heroSlides[currentSlide].subtitle}
-              </p>
-              <div className={`flex justify-center opacity-0 ${
-                isVisible ? 'animate-slideDown delay-300' : ''
-              } ${
-                isMobile 
-                  ? 'flex-col gap-3' 
-                  : 'flex-col sm:flex-row gap-4'
-              }`}>
-                <button onClick={scrollToContact} className="button-accent group px-6 py-3">
-                  {heroSlides[currentSlide].cta}
-                  <ArrowRight className="inline-block ml-2 transition-transform group-hover:translate-x-1 w-4 h-4 sm:w-5 sm:h-5" />
-                </button>
-                <button onClick={scrollToServices} className="button-secondary px-6 py-3">
-                  Nossos serviços
-                </button>
-              </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fadeIn">
+            <Button 
+              onClick={scrollToContact}
+              size="lg" 
+              className="bg-acqua-600 hover:bg-acqua-700 text-white px-8 py-4 text-lg font-semibold rounded-full"
+            >
+              Solicitar Orçamento
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            
+            <Button 
+              onClick={scrollToServices}
+              variant="outline" 
+              size="lg" 
+              className="border-2 border-white text-white hover:bg-white hover:text-acqua-900 px-8 py-4 text-lg font-semibold rounded-full"
+            >
+              <Play className="mr-2 w-5 h-5" />
+              Conheça Nossos Serviços
+            </Button>
+          </div>
+
+          {/* Contact Info */}
+          <div className="mt-12 opacity-0 animate-fadeIn">
+            <p className="text-acqua-200 mb-4">Entre em contato agora mesmo:</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-white">
+              <a 
+                href="tel:+5519999300066" 
+                className="flex items-center hover:text-acqua-300 transition-colors"
+              >
+                📞 (19) 99930-0066
+              </a>
+              <span className="hidden sm:block text-acqua-400">|</span>
+              <a 
+                href="mailto:comercial@acquaambiental.com.br" 
+                className="flex items-center hover:text-acqua-300 transition-colors"
+              >
+                ✉️ comercial@acquaambiental.com.br
+              </a>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className={`absolute top-1/2 -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20 ${
-            isMobile 
-              ? 'left-2 w-10 h-10' 
-              : 'left-4 w-12 h-12'
-          }`}
-          aria-label="Slide anterior"
-        >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className={`absolute top-1/2 -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white transition-all z-20 ${
-            isMobile 
-              ? 'right-2 w-10 h-10' 
-              : 'right-4 w-12 h-12'
-          }`}
-          aria-label="Próximo slide"
-        >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-
-        {/* Dots Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`rounded-full transition-all ${
-                index === currentSlide 
-                  ? 'bg-acqua-500 w-6 sm:w-8 h-2 sm:h-3'
-                  : 'bg-white bg-opacity-50 w-2 h-2 sm:w-3 sm:h-3'
-              }`}
-              aria-label={`Ir para slide ${index + 1}`}
-            />
-          ))}
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fadeIn">
+        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
     </section>
