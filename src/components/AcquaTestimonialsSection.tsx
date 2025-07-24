@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
@@ -7,29 +6,25 @@ const testimonials = [
     name: "João Silva",
     company: "Construtora Silva & Associados",
     content: "A Acqua Ambiental forneceu todos os materiais para nosso projeto de drenagem. Excelente qualidade e atendimento impecável.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+    rating: 5
   },
   {
-    name: "Maria Santos",
+    name: "Maria Santos", 
     company: "Arquiteta Autônoma",
     content: "Materiais de primeira qualidade para impermeabilização. O projeto ficou perfeito e os clientes ficaram muito satisfeitos.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b300?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+    rating: 5
   },
   {
     name: "Carlos Oliveira",
-    company: "Engenheiro Civil",
+    company: "Engenheiro Civil", 
     content: "Sistemas de filtragem de água excepcionais. A consultoria técnica da equipe foi fundamental para o sucesso do projeto.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+    rating: 5
   },
   {
     name: "Ana Costa",
     company: "Proprietária Residencial",
     content: "Instalação do sistema de aquecimento de água perfeita. Equipe muito profissional e materiais de alta qualidade.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+    rating: 5
   }
 ];
 
@@ -94,31 +89,21 @@ const AcquaTestimonialsSection = () => {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <img 
-                  src={testimonials[currentSlide].image} 
-                  alt={testimonials[currentSlide].name}
-                  className="w-20 h-20 rounded-full object-cover"
-                />
+            <div className="text-center">
+              <Quote className="w-8 h-8 text-acqua-300 mb-4 mx-auto" />
+              <p className="text-lg text-acqua-800 mb-6 leading-relaxed">
+                "{testimonials[currentSlide].content}"
+              </p>
+              
+              <div className="flex items-center justify-center mb-4">
+                {[...Array(testimonials[currentSlide].rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                ))}
               </div>
               
-              <div className="flex-1 text-center md:text-left">
-                <Quote className="w-8 h-8 text-acqua-300 mb-4 mx-auto md:mx-0" />
-                <p className="text-lg text-acqua-800 mb-6 leading-relaxed">
-                  "{testimonials[currentSlide].content}"
-                </p>
-                
-                <div className="flex items-center justify-center md:justify-start mb-4">
-                  {[...Array(testimonials[currentSlide].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                
-                <div>
-                  <h4 className="font-bold text-acqua-900">{testimonials[currentSlide].name}</h4>
-                  <p className="text-acqua-600">{testimonials[currentSlide].company}</p>
-                </div>
+              <div>
+                <h4 className="font-bold text-acqua-900">{testimonials[currentSlide].name}</h4>
+                <p className="text-acqua-600">{testimonials[currentSlide].company}</p>
               </div>
             </div>
           </div>
