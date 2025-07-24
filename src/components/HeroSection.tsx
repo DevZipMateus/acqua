@@ -2,9 +2,12 @@
 import { useEffect, useRef } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useResponsive, useContainer } from '@/hooks/use-responsive';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { isMobile, isTablet, isUltraWide } = useResponsive();
+  const { containerClass, spacing } = useContainer();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,8 +47,38 @@ const HeroSection = () => {
     }
   };
 
+  const getTextSizes = () => {
+    if (isMobile) {
+      return {
+        badge: 'text-xs px-3 py-1',
+        title: 'text-3xl md:text-4xl',
+        subtitle: 'text-base md:text-lg',
+        stats: 'text-xl',
+        statsLabel: 'text-xs'
+      };
+    }
+    if (isTablet) {
+      return {
+        badge: 'text-sm px-4 py-2',
+        title: 'text-4xl md:text-5xl lg:text-6xl',
+        subtitle: 'text-lg md:text-xl',
+        stats: 'text-2xl md:text-3xl',
+        statsLabel: 'text-sm'
+      };
+    }
+    return {
+      badge: 'text-sm px-4 py-2',
+      title: 'text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl',
+      subtitle: 'text-xl lg:text-2xl xl:text-3xl',
+      stats: 'text-3xl lg:text-4xl xl:text-5xl',
+      statsLabel: 'text-base'
+    };
+  };
+
+  const textSizes = getTextSizes();
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden acqua-gradient" ref={sectionRef}>
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden acqua-gradient ${spacing.section}`} ref={sectionRef}>
       {/* Background Video/Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -57,70 +90,74 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto text-center px-4">
-        <div className="max-w-4xl mx-auto">
-          <span className="inline-block py-2 px-4 rounded-full text-sm font-medium bg-acqua-500 text-white mb-6 opacity-0 animate-fadeIn">
+      <div className={`relative z-10 ${containerClass} mx-auto text-center`}>
+        <div className={`${isUltraWide ? 'max-w-6xl' : 'max-w-4xl'} mx-auto`}>
+          <span className={`inline-block rounded-full font-medium bg-acqua-500 text-white mb-6 opacity-0 animate-fadeIn ${textSizes.badge}`}>
             Materiais Técnicos para Construção Civil
           </span>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight opacity-0 animate-fadeIn">
+          <h1 className={`font-bold text-white mb-6 leading-tight opacity-0 animate-fadeIn ${textSizes.title}`}>
             Soluções em <span className="text-gradient">Sistemas de Água</span>
           </h1>
           
-          <p className="text-lg md:text-xl lg:text-2xl text-acqua-100 mb-8 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeIn">
+          <p className={`text-acqua-100 mb-8 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeIn ${textSizes.subtitle}`}>
             Especialistas em drenagem, impermeabilização, filtragem, aquecimento e circulação de água. 
             Materiais de alta qualidade para seu projeto.
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mb-10 opacity-0 animate-fadeIn">
+          <div className={`grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 opacity-0 animate-fadeIn`}>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">500+</div>
-              <div className="text-acqua-200 text-sm md:text-base">Projetos Atendidos</div>
+              <div className={`font-bold text-white mb-2 ${textSizes.stats}`}>500+</div>
+              <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Projetos Atendidos</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">98%</div>
-              <div className="text-acqua-200 text-sm md:text-base">Satisfação</div>
+              <div className={`font-bold text-white mb-2 ${textSizes.stats}`}>98%</div>
+              <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Satisfação</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">24h</div>
-              <div className="text-acqua-200 text-sm md:text-base">Atendimento</div>
+              <div className={`font-bold text-white mb-2 ${textSizes.stats}`}>24h</div>
+              <div className={`text-acqua-200 ${textSizes.statsLabel}`}>Atendimento</div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fadeIn">
+          <div className={`flex flex-col ${isMobile ? 'space-y-4' : 'sm:flex-row sm:space-y-0 sm:space-x-4'} justify-center items-center opacity-0 animate-fadeIn`}>
             <Button 
               onClick={scrollToContact}
-              size="lg" 
-              className="bg-acqua-600 hover:bg-acqua-700 text-white px-8 py-4 text-lg font-semibold rounded-full"
+              size={isMobile ? "default" : "lg"}
+              className={`bg-acqua-600 hover:bg-acqua-700 text-white font-semibold rounded-full ${
+                isMobile ? 'px-6 py-3 text-base w-full max-w-xs' : 'px-8 py-4 text-lg'
+              }`}
             >
               Solicitar Orçamento
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className={`ml-2 ${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
             </Button>
             
             <Button 
               onClick={scrollToServices}
               variant="outline" 
-              size="lg" 
-              className="border-2 border-white text-white hover:bg-white hover:text-acqua-900 px-8 py-4 text-lg font-semibold rounded-full"
+              size={isMobile ? "default" : "lg"}
+              className={`border-2 border-white text-white hover:bg-white hover:text-acqua-900 font-semibold rounded-full ${
+                isMobile ? 'px-6 py-3 text-base w-full max-w-xs' : 'px-8 py-4 text-lg'
+              }`}
             >
-              <Play className="mr-2 w-5 h-5" />
-              Conheça Nossos Serviços
+              <Play className={`mr-2 ${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
+              {isMobile ? 'Nossos Serviços' : 'Conheça Nossos Serviços'}
             </Button>
           </div>
 
           {/* Contact Info */}
           <div className="mt-12 opacity-0 animate-fadeIn">
-            <p className="text-acqua-200 mb-4">Entre em contato agora mesmo:</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-white">
+            <p className={`text-acqua-200 mb-4 ${isMobile ? 'text-sm' : 'text-base'}`}>Entre em contato agora mesmo:</p>
+            <div className={`flex ${isMobile ? 'flex-col space-y-2' : 'flex-col sm:flex-row'} ${!isMobile ? 'gap-4' : ''} justify-center items-center text-white ${isMobile ? 'text-sm' : 'text-base'}`}>
               <a 
                 href="tel:+5519999300066" 
                 className="flex items-center hover:text-acqua-300 transition-colors"
               >
                 📞 (19) 99930-0066
               </a>
-              <span className="hidden sm:block text-acqua-400">|</span>
+              {!isMobile && <span className="hidden sm:block text-acqua-400">|</span>}
               <a 
                 href="mailto:comercial@acquaambiental.com.br" 
                 className="flex items-center hover:text-acqua-300 transition-colors"
@@ -133,11 +170,13 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fadeIn">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+      {!isMobile && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fadeIn">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
