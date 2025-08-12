@@ -8,7 +8,6 @@ const Header = () => {
   const { isMobile, isTablet } = useResponsive();
   const { containerClass } = useContainer();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   const menuItems = [
@@ -19,26 +18,8 @@ const Header = () => {
     { name: 'Contato', path: '/contact' }
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
-    }`}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className={`mx-auto ${containerClass}`}>
         <div className={`flex items-center justify-between ${isMobile ? 'py-3' : 'py-4'}`}>
           {/* Logo */}
@@ -48,7 +29,7 @@ const Header = () => {
               alt="Acqua Vedações Logo" 
               className={`${isMobile ? 'h-8' : 'h-10'} w-auto`}
             />
-            <span className={`font-bold ${scrolled ? 'text-gray-900' : 'text-white'} ${
+            <span className={`font-bold text-gray-900 ${
               isMobile ? 'text-lg' : 'text-xl'
             }`}>
               Acqua Vedações
@@ -64,8 +45,8 @@ const Header = () => {
                   to={item.path}
                   className={`font-medium transition-colors ${
                     location.pathname === item.path
-                      ? scrolled ? 'text-blue-600' : 'text-blue-200'
-                      : scrolled ? 'text-gray-700 hover:text-blue-600' : 'text-white hover:text-blue-200'
+                      ? 'text-blue-600'
+                      : 'text-gray-700 hover:text-blue-600'
                   }`}
                 >
                   {item.name}
@@ -78,7 +59,7 @@ const Header = () => {
           {isMobile && (
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-lg ${scrolled ? 'text-gray-700' : 'text-white'}`}
+              className="p-2 rounded-lg text-gray-700"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
