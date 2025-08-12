@@ -82,8 +82,8 @@ const HeroSection = () => {
       {/* Background Video/Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-          alt="Sistemas de água e drenagem" 
+          src="/lovable-uploads/9b77b80c-077b-4126-9e45-17e877157862.png" 
+          alt="Warehouse with organized materials" 
           className="w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-acqua-900/50 to-acqua-600/30"></div>
