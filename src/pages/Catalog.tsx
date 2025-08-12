@@ -110,7 +110,7 @@ const Catalog = () => {
       
       <main className="w-full">
         {/* Hero Section */}
-        <section className={`bg-gradient-to-br from-blue-600 to-blue-800 text-white ${spacing.section}`}>
+        <section className={`bg-gradient-to-br from-acqua-600 to-acqua-800 text-white ${spacing.section}`}>
           <div className={`mx-auto ${containerClass}`}>
             <div className="text-center">
               <h1 className={`font-bold mb-4 ${isMobile ? 'text-2xl' : isTablet ? 'text-3xl' : 'text-4xl'}`}>
@@ -135,7 +135,7 @@ const Catalog = () => {
                   placeholder="Buscar produtos..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acqua-500 focus:border-transparent"
                 />
               </div>
 
@@ -147,8 +147,8 @@ const Catalog = () => {
                     onClick={() => setActiveCategory(category.id)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                       activeCategory === category.id
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-white text-gray-700 hover:bg-blue-50 border border-gray-300'
+                        ? 'bg-acqua-600 text-white'
+                        : 'bg-white text-gray-700 hover:bg-acqua-50 border border-gray-300'
                     }`}
                   >
                     <Filter className="w-4 h-4 inline mr-2" />
@@ -185,7 +185,7 @@ const Catalog = () => {
                       <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <button 
-                            className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors"
+                            className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-acqua-600 hover:bg-acqua-50 transition-colors"
                             onClick={(e) => {
                               e.stopPropagation();
                               handleImageExpand(product);
@@ -200,7 +200,7 @@ const Catalog = () => {
                       <h3 className={`font-semibold text-gray-900 mb-2 ${isMobile ? 'text-sm' : 'text-base'} line-clamp-2`}>
                         {product.name}
                       </h3>
-                      <span className="inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full capitalize mb-3">
+                      <span className="inline-block px-2 py-1 bg-acqua-100 text-acqua-700 text-xs rounded-full capitalize mb-3">
                         {product.category}
                       </span>
                       <button
