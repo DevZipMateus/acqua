@@ -97,7 +97,7 @@ const HeroSection = () => {
           </span>
           
           <h1 className={`font-bold text-white mb-4 leading-tight opacity-0 animate-fadeIn ${textSizes.title}`}>
-            Soluções em <span className="text-gradient">Sistemas de Água</span>
+            Soluções em <span className="text-gradient">Vedações</span>
           </h1>
           
           <p className={`text-acqua-100 mb-6 ${isMobile ? 'max-w-xs' : 'max-w-3xl'} mx-auto leading-relaxed opacity-0 animate-fadeIn ${textSizes.subtitle}`}>
