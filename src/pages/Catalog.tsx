@@ -1,10 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import { useResponsive, useContainer } from '@/hooks/use-responsive';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingButton from '@/components/FloatingButton';
-import { Search, Filter, X, Eye } from 'lucide-react';
+import { Search, Filter, X, Eye, MessageCircle } from 'lucide-react';
 
 // Product data extracted from the image filenames
 const products = [
@@ -96,6 +95,14 @@ const Catalog = () => {
       document.body.style.overflow = 'unset';
     };
   }, [expandedImage]);
+
+  const handleWhatsAppRedirect = (productName: string) => {
+    const phoneNumber = "5511999999999"; // Replace with the actual company phone number
+    const message = `Olá! Gostaria de solicitar um orçamento para o produto: ${productName}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
@@ -193,9 +200,16 @@ const Catalog = () => {
                       <h3 className={`font-semibold text-gray-900 mb-2 ${isMobile ? 'text-sm' : 'text-base'} line-clamp-2`}>
                         {product.name}
                       </h3>
-                      <span className="inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full capitalize">
+                      <span className="inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full capitalize mb-3">
                         {product.category}
                       </span>
+                      <button
+                        onClick={() => handleWhatsAppRedirect(product.name)}
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm"
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                        Solicitar Orçamento
+                      </button>
                     </div>
                   </div>
                 ))}
