@@ -4,7 +4,6 @@ import AcquaAboutSection from "@/components/AcquaAboutSection";
 import AcquaServicesSection from "@/components/AcquaServicesSection";
 import AcquaTestimonialsSection from "@/components/AcquaTestimonialsSection";
 import AcquaLocationSection from "@/components/AcquaLocationSection";
-import AcquaContactForm from "@/components/AcquaContactForm";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingButton from "@/components/FloatingButton";
@@ -28,9 +27,6 @@ const Index = () => {
         </div>
         <div id="location" className="w-full">
           <AcquaLocationSection />
-        </div>
-        <div id="contact" className="w-full">
-          <AcquaContactForm />
         </div>
       </main>
       <Footer />
