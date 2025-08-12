@@ -2,7 +2,6 @@
 import HeroSection from "@/components/HeroSection";
 import AcquaAboutSection from "@/components/AcquaAboutSection";
 import AcquaServicesSection from "@/components/AcquaServicesSection";
-import AcquaPlansSection from "@/components/AcquaPlansSection";
 import AcquaTestimonialsSection from "@/components/AcquaTestimonialsSection";
 import AcquaLocationSection from "@/components/AcquaLocationSection";
 import AcquaContactForm from "@/components/AcquaContactForm";
@@ -23,9 +22,6 @@ const Index = () => {
         </div>
         <div id="services" className="w-full">
           <AcquaServicesSection />
-        </div>
-        <div id="plans" className="w-full">
-          <AcquaPlansSection />
         </div>
         <div id="testimonials" className="w-full">
           <AcquaTestimonialsSection />
