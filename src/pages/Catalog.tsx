@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import FloatingButton from '@/components/FloatingButton';
 import { Search, Filter, X, Eye, MessageCircle } from 'lucide-react';
 
-// Product data extracted from the image filenames
+// Complete product data extracted from all available images in the galeria folder
 const products = [
   { id: 1, name: "QBorg Trincas - Mastique acrílico", image: "/lovable-uploads/galeria/Cliente_1_1_QBorg Trincas - Mastique acrli.jpg", category: "selantes" },
   { id: 2, name: "Base D'Água - Selante com acabamento", image: "/lovable-uploads/galeria/Cliente_1_2_Base DAgua - Selante com acaba.jpg", category: "selantes" },
@@ -36,7 +36,59 @@ const products = [
   { id: 27, name: "QVeda - Fita autoadesiva", image: "/lovable-uploads/galeria/Cliente_1_27_QVeda - Fita autoadesiva para.png", category: "vedação" },
   { id: 28, name: "Qveda Azul 1 - Fita Autoadesiva", image: "/lovable-uploads/galeria/Cliente_1_28_Qveda Azul 1 - Fita Autoaderen.jpg", category: "vedação" },
   { id: 29, name: "300 Chumbador Estrutural - Fixador", image: "/lovable-uploads/galeria/Cliente_1_29_300 Chumbador Estrutural - Fix.jpg", category: "fixação" },
-  { id: 30, name: "Adesivo Epóxi Tixotrópico - Adesivo", image: "/lovable-uploads/galeria/Cliente_1_30_Adesivo Epxi Tixotrpico - Ades.png", category: "adesivos" }
+  { id: 30, name: "Adesivo Epóxi Tixotrópico - Adesivo", image: "/lovable-uploads/galeria/Cliente_1_30_Adesivo Epxi Tixotrpico - Ades.png", category: "adesivos" },
+  { id: 31, name: "Adesivo Epóxi - Adesivo estrutural", image: "/lovable-uploads/galeria/Cliente_1_31_Adesivo Epxi - Adesivo estrutu.png", category: "adesivos" },
+  { id: 32, name: "Desmoldante MD - Desmoldante", image: "/lovable-uploads/galeria/Cliente_1_32_Desmoldante MD - Desmoldante p.jpg", category: "desmoldantes" },
+  { id: 33, name: "Desmoldante MD Fácil - Desmoldante", image: "/lovable-uploads/galeria/Cliente_1_33_Desmoldante MD Fcil - Desmolda.jpg", category: "desmoldantes" },
+  { id: 34, name: "Desmoldante MD Multi - Desmoldante", image: "/lovable-uploads/galeria/Cliente_1_34_Desmoldante MD Multi - Desmold.png", category: "desmoldantes" },
+  { id: 35, name: "Top - Revestimento semi-flexível", image: "/lovable-uploads/galeria/Cliente_1_35_Top - Revestimento semi-flexve.jpg", category: "revestimentos" },
+  { id: 36, name: "Top Flex Fibras - Revestimento", image: "/lovable-uploads/galeria/Cliente_1_36_Top Flex Fibras - Revestimento.png", category: "revestimentos" },
+  { id: 37, name: "TOP FLEX - Revestimento flexível", image: "/lovable-uploads/galeria/Cliente_1_37_TOP FLEX - Revestimento flexve.jpg", category: "revestimentos" },
+  { id: 38, name: "Espuma PU Pro - Espuma expansiva", image: "/lovable-uploads/galeria/Cliente_1_38_Espuma_PU_Pro - Espuma expansi.png", category: "espumas" },
+  { id: 39, name: "Espuma Pu - Adesivo extra forte", image: "/lovable-uploads/galeria/Cliente_1_39_Espuma_Pu - Adesivo extra fort.jpg", category: "espumas" },
+  { id: 40, name: "Chapisco Químico I - Adesivo", image: "/lovable-uploads/galeria/Cliente_1_40_Chapisco_Quimico I - Adesivo a.png", category: "chapiscos" },
+  { id: 41, name: "Chapisco Acrílico - Adesivo", image: "/lovable-uploads/galeria/Cliente_1_41_Chapisco_Acrilico - Adesivo ac.jpg", category: "chapiscos" },
+  { id: 42, name: "Adesivo Para Chapisco Base PVA", image: "/lovable-uploads/galeria/Cliente_1_42_Adesivo Para Chapisco Base PVA.png", category: "chapiscos" },
+  { id: 43, name: "Adesivo Para Chapisco Base PVA", image: "/lovable-uploads/galeria/Cliente_1_43_Adesivo Para Chapisco Base PVA.jpg", category: "chapiscos" },
+  { id: 44, name: "Cura Química", image: "/lovable-uploads/galeria/Cliente_1_44_CuraQuimica.png", category: "aditivos" },
+  { id: 45, name: "Hidrofugante Fachadas Pedras", image: "/lovable-uploads/galeria/Cliente_1_45_Hidrofugante Fachadas Pedras e.jpg", category: "hidrofugantes" },
+  { id: 46, name: "WP Parede Premium", image: "/lovable-uploads/galeria/Cliente_1_46_WPParedePremium.png", category: "hidrofugantes" },
+  { id: 47, name: "WP1 - Hidrofugante Argamassa", image: "/lovable-uploads/galeria/Cliente_1_47_WP1 - Hidrofugante Argamassa e.jpg", category: "hidrofugantes" },
+  { id: 48, name: "WP1 - Hidrofugante Argamassa", image: "/lovable-uploads/galeria/Cliente_1_48_WP1 - Hidrofugante Argamassa e.jpg", category: "hidrofugantes" },
+  { id: 49, name: "Primer Base Água I", image: "/lovable-uploads/galeria/Cliente_1_49_Primer Base gua I.jpg", category: "primers" },
+  { id: 50, name: "Primer Base Água", image: "/lovable-uploads/galeria/Cliente_1_50_Primer Base gua.jpg", category: "primers" },
+  { id: 51, name: "Hidroasfalto I", image: "/lovable-uploads/galeria/Cliente_1_51_Hidroasfalto I.jpg", category: "impermeabilização" },
+  { id: 52, name: "Hidroasfalto", image: "/lovable-uploads/galeria/Cliente_1_52_Hidroasfalto.jpg", category: "impermeabilização" },
+  { id: 53, name: "Hard - Endurecedor Superfície", image: "/lovable-uploads/galeria/Cliente_1_53_Hard - Endurecedor Superficie.png", category: "endurecedores" },
+  { id: 54, name: "Hard - Endurecedor Superfície", image: "/lovable-uploads/galeria/Cliente_1_54_Hard - Endurecedor Superficie.png", category: "endurecedores" },
+  { id: 55, name: "Plastificante", image: "/lovable-uploads/galeria/Cliente_1_55_Plastificante.png", category: "aditivos" },
+  { id: 56, name: "Plastificante", image: "/lovable-uploads/galeria/Cliente_1_56_Plastificante.jpg", category: "aditivos" },
+  { id: 57, name: "Pro Cubas Branco", image: "/lovable-uploads/galeria/Cliente_1_57_ProCubasBranco.png", category: "selantes" },
+  { id: 58, name: "Pro Cubas", image: "/lovable-uploads/galeria/Cliente_1_58_ProCubas.jpg", category: "selantes" },
+  { id: 59, name: "Pro Espelhos Sachê", image: "/lovable-uploads/galeria/Cliente_1_59_Proespelhos_Sache.png", category: "adesivos" },
+  { id: 60, name: "Pro Espelhos", image: "/lovable-uploads/galeria/Cliente_1_60_ProEspelhos.png", category: "adesivos" },
+  { id: 61, name: "High Tack Preto", image: "/lovable-uploads/galeria/Cliente_1_61_HighTack_Preto.png", category: "adesivos" },
+  { id: 62, name: "Pro Fixa Tudo", image: "/lovable-uploads/galeria/Cliente_1_62_ProFixaTudopq.png", category: "adesivos" },
+  { id: 63, name: "Pro Fixa Tudo Tubo", image: "/lovable-uploads/galeria/Cliente_1_63_Profixatudo_tubo.png", category: "adesivos" },
+  { id: 64, name: "Pro Silicone Neutro", image: "/lovable-uploads/galeria/Cliente_1_64_pro_silicone_neutro.png", category: "silicones" },
+  { id: 65, name: "MACPIPE Tubo Dreno NBR", image: "/lovable-uploads/galeria/Cliente_1_65_Cpia de MACPIPE TUBO DRENO NBR.jpg", category: "tubos" },
+  { id: 66, name: "Camisa Geotêxtil", image: "/lovable-uploads/galeria/Cliente_1_66_CAMISA GEOTEXTIL 336x336.jpg", category: "geotêxteis" },
+  { id: 67, name: "MACDRAIN TD", image: "/lovable-uploads/galeria/Cliente_1_67_MACDRAIN TD.jpg", category: "drenagem" },
+  { id: 68, name: "FIBROMAC 12", image: "/lovable-uploads/galeria/Cliente_1_68_FIBROMAC 12.JPG", category: "fibras" },
+  { id: 69, name: "FIBROMAC 6", image: "/lovable-uploads/galeria/Cliente_1_69_FIBROMAC 6 640x480.jpg", category: "fibras" },
+  { id: 70, name: "FIBROMAC", image: "/lovable-uploads/galeria/Cliente_1_70_FIBROMAC 640x480.jpg", category: "fibras" },
+  { id: 71, name: "MACDRAIN VC", image: "/lovable-uploads/galeria/Cliente_1_71_MACDRAIN VC 640x480.jpg", category: "drenagem" },
+  { id: 72, name: "MACDRAIN 1L", image: "/lovable-uploads/galeria/Cliente_1_72_MACDRAIN 1L 640x480.jpg", category: "drenagem" },
+  { id: 73, name: "MACDRAIN 1S", image: "/lovable-uploads/galeria/Cliente_1_73_MACDRAIN 1S 640x480.jpg", category: "drenagem" },
+  { id: 74, name: "MACDRAIN 2L", image: "/lovable-uploads/galeria/Cliente_1_74_MACDRAIN 2L.jpg", category: "drenagem" },
+  { id: 75, name: "MACMAT 10", image: "/lovable-uploads/galeria/Cliente_1_75_MACMAT 10.JPG", category: "mantas" },
+  { id: 76, name: "MACDRAIN 1L", image: "/lovable-uploads/galeria/Cliente_1_76_MACDRAIN 1L.jpg", category: "drenagem" },
+  { id: 77, name: "MACDRAIN FP", image: "/lovable-uploads/galeria/Cliente_1_77_MACDRAIN FP 640x480.jpg", category: "drenagem" },
+  { id: 78, name: "MACDRAIN R2", image: "/lovable-uploads/galeria/Cliente_1_78_MACDRAIN R2 640x480.jpg", category: "drenagem" },
+  { id: 79, name: "MACDRAIN R1", image: "/lovable-uploads/galeria/Cliente_1_79_MACDRAIN R1 640x480.jpg", category: "drenagem" },
+  { id: 80, name: "BIOMAC", image: "/lovable-uploads/galeria/Cliente_1_80_BIOMAC 640x426.jpg", category: "biomanta" },
+  { id: 81, name: "MACPIPE H Tubo Dreno DNIT", image: "/lovable-uploads/galeria/Cliente_1_81_MACPIPE H TUBO DRENO DNIT 093.jpg", category: "tubos" },
+  { id: 82, name: "MACDRAIN 2L", image: "/lovable-uploads/galeria/Cliente_1_82_MACDRAIN 2L 640x480.jpg", category: "drenagem" }
 ];
 
 const categories = [
@@ -48,7 +100,21 @@ const categories = [
   { id: 'automotivo', name: 'Automotivo' },
   { id: 'construção', name: 'Construção' },
   { id: 'adesivos', name: 'Adesivos' },
-  { id: 'fixação', name: 'Fixação' }
+  { id: 'fixação', name: 'Fixação' },
+  { id: 'desmoldantes', name: 'Desmoldantes' },
+  { id: 'revestimentos', name: 'Revestimentos' },
+  { id: 'espumas', name: 'Espumas' },
+  { id: 'chapiscos', name: 'Chapiscos' },
+  { id: 'aditivos', name: 'Aditivos' },
+  { id: 'hidrofugantes', name: 'Hidrofugantes' },
+  { id: 'primers', name: 'Primers' },
+  { id: 'endurecedores', name: 'Endurecedores' },
+  { id: 'tubos', name: 'Tubos' },
+  { id: 'geotêxteis', name: 'Geotêxteis' },
+  { id: 'drenagem', name: 'Drenagem' },
+  { id: 'fibras', name: 'Fibras' },
+  { id: 'mantas', name: 'Mantas' },
+  { id: 'biomanta', name: 'Biomanta' }
 ];
 
 const Catalog = () => {
