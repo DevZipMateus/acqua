@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Building2, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useResponsive, useContainer } from '@/hooks/use-responsive';
 
 const Header = () => {
@@ -43,9 +43,11 @@ const Header = () => {
         <div className={`flex items-center justify-between ${isMobile ? 'py-3' : 'py-4'}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Building2 className="w-6 h-6 text-white" />
-            </div>
+            <img 
+              src="/lovable-uploads/1efb30e4-9827-4086-8d02-9406b8f1f8b4.png" 
+              alt="Acqua Vedações Logo" 
+              className={`${isMobile ? 'h-8' : 'h-10'} w-auto`}
+            />
             <span className={`font-bold ${scrolled ? 'text-gray-900' : 'text-white'} ${
               isMobile ? 'text-lg' : 'text-xl'
             }`}>
