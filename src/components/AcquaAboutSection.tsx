@@ -120,8 +120,8 @@ const AcquaAboutSection = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Sistemas de água e drenagem" 
+                src="/lovable-uploads/720148b1-132d-46fb-935c-a6ac8b7d547b.png" 
+                alt="Sistemas de impermeabilização e drenagem" 
                 className="rounded-xl shadow-lg w-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-acqua-900 via-transparent to-transparent rounded-xl opacity-30"></div>
